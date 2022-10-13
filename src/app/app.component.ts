@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-import { environment } from '../environments/environment';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +6,8 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'bouffe-roulette';
 
-  ngOnInit(): void {
-    console.log('[TEST] environment.googleApiKey : ', environment.googleApiKey);
-  }
+  ngOnInit(): void {}
+
+  title = 'bouffe-roulette';
 }
