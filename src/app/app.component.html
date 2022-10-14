@@ -1,7 +1,7 @@
 <div class="main flex flex-col justify-center items-center h-100 w-full">
   <div class="flex flex-col justify-center items-center w-4/5">
     <div class="flex flex-col justify-center items-center w-100 mt-24">
-      <app-circle-steps *ngIf="!isFirstStep()" [steps]="steps" [activeStep]="currentStep.toString()"></app-circle-steps>
+      <app-circle-steps *ngIf="!isFirstStep()" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
     </div>
     <div [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center mt-24">
       <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>

@@ -14,11 +14,11 @@ export class AppComponent implements OnInit {
 
   currentStep = 0;
   steps: ICircleStep[] = [
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} }
+    { id: 0, onClick: () => {} },
+    { id: 1, onClick: () => {} },
+    { id: 2, onClick: () => {} },
+    { id: 3, onClick: () => {} },
+    { id: 4, onClick: () => {} }
   ]
 
   constructor(private httpClient: HttpClient) {
@@ -54,7 +54,11 @@ export class AppComponent implements OnInit {
   }
 
   isFirstContentStep(): boolean {
-    return this.currentStep === 1;
+    return this.currentStep === this.firstContentStep;
+  }
+
+  get firstContentStep(): number {
+    return 1;
   }
 
   isLastStep(): boolean {

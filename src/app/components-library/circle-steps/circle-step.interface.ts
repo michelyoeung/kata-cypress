@@ -1,4 +1,4 @@
 export interface ICircleStep {
-  label: string;
+  id: number;
   onClick?: () => void;
 }

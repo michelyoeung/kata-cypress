@@ -8,13 +8,13 @@ import { ICircleStep } from './circle-step.interface';
 })
 export class CircleStepsComponent {
   @Input() steps: ICircleStep[] = [];
-  @Input() activeStep: string = '0';
+  @Input() activeStep: number = 0;
   @Input() useCurrentActive = false;
   @Input() circleSize: 'small' | 'normal' = 'normal';
 
   isBeforeActiveStep(currentStep: ICircleStep) {
-    const activeIndex = this.steps.findIndex((step) => step.label === this.activeStep);
-    const currentIndex = this.steps.findIndex((step) => step.label === currentStep.label);
+    const activeIndex = this.steps.findIndex((step) => step.id === this.activeStep);
+    const currentIndex = this.steps.findIndex((step) => step.id === currentStep.id);
     return currentIndex < activeIndex;
   }
 }
