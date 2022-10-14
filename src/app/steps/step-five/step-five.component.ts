@@ -14,6 +14,7 @@ export class StepFiveComponent implements OnInit {
   @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
   apiLoaded: Observable<boolean>;
+  choiceOfRestaurant : string[] = [];
 
   constructor(private httpClient: HttpClient, private _api: ApiService) {
     this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`, 'callback')
@@ -24,7 +25,7 @@ export class StepFiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._api.getLocation();
+    this._api.getNearbyRestaurant(this.stepData);
     console.log(this.stepData);
   }
 

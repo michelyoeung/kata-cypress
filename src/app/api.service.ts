@@ -6,27 +6,24 @@ import {GOOGLE_API_KEY} from "../../env";
   providedIn: 'root'
 })
 export class ApiService {
-
   constructor(private httpClient: HttpClient) { }
 
-  getLocation() {
+
+  getNearbyRestaurant(options : any) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position)=>{
-        this.getNearbyRestaurant(position)
+        const choiceOfRestaurant : string[] = [];
+        const restaurant = this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=1000&type=restaurant&key=${GOOGLE_API_KEY}`)
+        restaurant.subscribe((res: any)=> {
+          res.results.map((restaurant: any) => {
+            choiceOfRestaurant.push((restaurant.name));
+          })
+        })
+        return choiceOfRestaurant
       });
     } else {
       console.log("No support for geolocation")
     }
   }
 
-  getNearbyRestaurant(position: GeolocationPosition){
-    const choiceOfRestaurant : string[] = [];
-    const restaurant = this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=1000&type=restaurant&key=${GOOGLE_API_KEY}`)
-    restaurant.subscribe((res: any)=> {
-      res.results.map((restaurant: any) => {
-        choiceOfRestaurant.push((restaurant.name));
-      })
-      return choiceOfRestaurant
-    })
-  }
 }
