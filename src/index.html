@@ -34,6 +34,10 @@
     
     void main() {       
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+
+        // vec2 textureCoord = vTextureCoord;
+        // textureCoord.x += sin(textureCoord.y * 25.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
+        // gl_FragColor = texture2D(uSampler0, textureCoord)
         
         // set the varyings
         // here we use our texture matrix to calculate the accurate texture coords

@@ -78,18 +78,54 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     const plane1 = new Plane(curtains, this.curtainPlaneElement1.nativeElement, params);
     const plane2 = new Plane(curtains, this.curtainPlaneElement2.nativeElement, params);
 
+    const max = 90;
+    const min = 70;
+    let value = min;
+    let side = true;
+    let numberOfIterations = 0;
+
     plane1.onRender(() => {
-      plane1.uniforms.time.value++;
       setTimeout(() => {
         plane1.relativeTranslation.x -= 10;
-      }, 500)
+      }, 300)
+      if (numberOfIterations < 4) {
+        numberOfIterations++;
+        return;
+      }
+      numberOfIterations = 0;
+      if (value > max || value < min) {
+        side = !side;
+      }
+      if (side) {
+        value++;
+
+      } else {
+        value--;
+      }
+
+      plane1.uniforms.time.value = value;
     });
 
     plane2.onRender(() => {
-      plane2.uniforms.time.value++;
       setTimeout(() => {
         plane2.relativeTranslation.x += 10;
-      }, 500)
+      }, 300)
+      if (numberOfIterations < 4) {
+        numberOfIterations++;
+        return;
+      }
+      numberOfIterations = 0;
+      if (value > max || value < min) {
+        side = !side;
+      }
+      if (side) {
+        value++;
+
+      } else {
+        value--;
+      }
+
+      plane2.uniforms.time.value = value;
     });
 
     curtains.onRender(() => {
