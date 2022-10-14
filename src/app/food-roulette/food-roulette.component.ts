@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-food-roulette',
@@ -7,26 +7,34 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@a
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
-  constructor() {
-  }
-
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  @Input() height = 500;
+  @Input() width = 500;
   @Input() options = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
 
-  startAngle = 0;
-  arc = Math.PI / (this.options.length / 2);
-  spinAngleStart = 0;
+  @Input() stepSize = 25;
+  @Input() spinDuration = 5000; // ms
+  @Input() outsideRadius = 200;
+  @Input() textRadius = 160;
+  @Input() insideRadius = 125;
 
-  spinTimeout: any;
+  @Input() itemFont = 'bold 12px Helvetica, Arial';
+  @Input() decisionFont = 'bold 30px Helvetica, Arial';
 
-  spinTime = 0;
-  spinTimeTotal = 0;
+  @Output() spinStart: EventEmitter<void> = new EventEmitter<void>();
+  @Output() foodDecisionEnd: EventEmitter<string> = new EventEmitter<string>();
+
+  private _startAngle = 0;
+  private _arc = Math.PI / (this.options.length / 2);
+  private _spinAngleStart = 0;
+  private _spinTimeout: any;
+  private _curSpinTime = 0;
+  private _spinTimeTotal = 0;
 
   @ViewChild('roulette', {static: false}) canvas!: ElementRef<HTMLCanvasElement>;
 
@@ -39,11 +47,11 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     return '#' + this.byte2Hex(r) + this.byte2Hex(g) + this.byte2Hex(b);
   }
 
-  getColor(item: number, maxitem: number) {
+  getColor(item: number, maxItems: number) {
     const phase = 0;
     const center = 128;
     const width = 127;
-    const frequency = Math.PI * 2 / maxitem;
+    const frequency = Math.PI * 2 / maxItems;
 
     const red = Math.sin(frequency * item + 2 + phase) * width + center;
     const green = Math.sin(frequency * item + 0 + phase) * width + center;
@@ -54,26 +62,22 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
   drawRouletteWheel() {
     if (this.canvas.nativeElement.getContext) {
-      const outsideRadius = 200;
-      const textRadius = 160;
-      const insideRadius = 125;
-
       const ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
       ctx.clearRect(0, 0, 500, 500);
 
       ctx.strokeStyle = "black";
       ctx.lineWidth = 2;
 
-      ctx.font = 'bold 12px Helvetica, Arial';
+      ctx.font = this.itemFont;
 
       for (let i = 0; i < this.options.length; i++) {
-        const angle = this.startAngle + i * this.arc;
+        const angle = this._startAngle + i * this._arc;
         //ctx.fillStyle = colors[i];
         ctx.fillStyle = this.getColor(i, this.options.length);
 
         ctx.beginPath();
-        ctx.arc(250, 250, outsideRadius, angle, angle + this.arc, false);
-        ctx.arc(250, 250, insideRadius, angle + this.arc, angle, true);
+        ctx.arc(250, 250, this.outsideRadius, angle, angle + this._arc, false);
+        ctx.arc(250, 250, this.insideRadius, angle + this._arc, angle, true);
         ctx.stroke();
         ctx.fill();
 
@@ -83,9 +87,9 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         ctx.shadowBlur = 0;
         ctx.shadowColor = "rgb(220,220,220)";
         ctx.fillStyle = "black";
-        ctx.translate(250 + Math.cos(angle + this.arc / 2) * textRadius,
-          250 + Math.sin(angle + this.arc / 2) * textRadius);
-        ctx.rotate(angle + this.arc / 2 + Math.PI / 2);
+        ctx.translate(250 + Math.cos(angle + this._arc / 2) * this.textRadius,
+          250 + Math.sin(angle + this._arc / 2) * this.textRadius);
+        ctx.rotate(angle + this._arc / 2 + Math.PI / 2);
         const text = this.options[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
         ctx.restore();
@@ -94,49 +98,53 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       //Arrow
       ctx.fillStyle = "black";
       ctx.beginPath();
-      ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
-      ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
-      ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
-      ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
-      ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
-      ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
-      ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
-      ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
+      ctx.moveTo(250 - 4, 250 - (this.outsideRadius + 5));
+      ctx.lineTo(250 + 4, 250 - (this.outsideRadius + 5));
+      ctx.lineTo(250 + 4, 250 - (this.outsideRadius - 5));
+      ctx.lineTo(250 + 9, 250 - (this.outsideRadius - 5));
+      ctx.lineTo(250 + 0, 250 - (this.outsideRadius - 13));
+      ctx.lineTo(250 - 9, 250 - (this.outsideRadius - 5));
+      ctx.lineTo(250 - 4, 250 - (this.outsideRadius - 5));
+      ctx.lineTo(250 - 4, 250 - (this.outsideRadius + 5));
       ctx.fill();
     }
   }
 
   spin() {
-    this.spinAngleStart = Math.random() * 10 + 10;
-    this.spinTime = 0;
-    this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
+    this.spinStart.emit();
+    this._spinAngleStart = Math.random() * 125 + 10;
+    this._curSpinTime = 0;
+    this._spinTimeTotal = Math.random() * 3 + this.spinDuration;
+    console.log('spinTimeTotal', this._spinTimeTotal);
     this.rotateWheel();
   }
 
   rotateWheel() {
-    this.spinTime += 30;
-    console.log('spintime', this.spinTime);
-    if (this.spinTime >= this.spinTimeTotal) {
+    this._curSpinTime += this.stepSize;
+    console.log('spintime', this._curSpinTime);
+    if (this._curSpinTime >= this._spinTimeTotal) {
       this.stopRotateWheel();
       return;
     }
-    const spinAngle = this.spinAngleStart - this.easeOut(this.spinTime, 0, this.spinAngleStart, this.spinTimeTotal);
-    this.startAngle += (spinAngle * Math.PI / 180);
+    const spinAngle = this._spinAngleStart - this.easeOut(this._curSpinTime, 0, this._spinAngleStart, this._spinTimeTotal);
+    this._startAngle += (spinAngle * Math.PI / 180);
     this.drawRouletteWheel();
-    this.spinTimeout = setTimeout(() => this.rotateWheel(), 30);
+    this._spinTimeout = setTimeout(() => this.rotateWheel(), this.stepSize);
   }
 
   stopRotateWheel() {
     const ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
-    clearTimeout(this.spinTimeout);
-    const degrees = this.startAngle * 180 / Math.PI + 90;
-    const arcd = this.arc * 180 / Math.PI;
+    clearTimeout(this._spinTimeout);
+    const degrees = this._startAngle * 180 / Math.PI + 90;
+    const arcd = this._arc * 180 / Math.PI;
     const index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
-    ctx.font = 'bold 30px Helvetica, Arial';
+    ctx.font = this.decisionFont;
     const text = this.options[index]
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
+
+    this.foodDecisionEnd.emit(text);
   }
 
   easeOut(t: number, b: number, c: number, d: number) {
