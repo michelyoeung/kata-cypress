@@ -82,11 +82,11 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         ctx.fill();
 
         ctx.save();
-        ctx.shadowOffsetX = -1;
-        ctx.shadowOffsetY = -1;
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 2;
         ctx.shadowBlur = 0;
-        ctx.shadowColor = "rgb(220,220,220)";
-        ctx.fillStyle = "black";
+        ctx.shadowColor = "rgb(20,20,20)";
+        ctx.fillStyle = "white";
         ctx.translate(250 + Math.cos(angle + this._arc / 2) * this.textRadius,
           250 + Math.sin(angle + this._arc / 2) * this.textRadius);
         ctx.rotate(angle + this._arc / 2 + Math.PI / 2);
