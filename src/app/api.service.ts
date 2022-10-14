@@ -23,16 +23,20 @@ export class ApiService {
     let maxprice: string = '';
     console.log("options", options)
     switch(options.priceRange) {
-      case 'low':
+      case 'cheap':
         minprice = '0'
         maxprice = '1'
         break;
-      case 'average':
+      case 'moderate':
         minprice = '1'
         maxprice = '2'
         break;
-      case 'high' :
+      case 'expensive' :
         minprice = '2'
+        maxprice = '4'
+        break;
+      case 'all' :
+        minprice = '0'
         maxprice = '4'
         break;
     }
