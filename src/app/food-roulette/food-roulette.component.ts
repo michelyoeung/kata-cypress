@@ -21,7 +21,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   @Input() insideRadius = 125;
 
   @Input() itemFont = 'bold 12px Helvetica, Arial';
-  @Input() decisionFont = 'bold 30px Helvetica, Arial';
+  @Input() decisionFont = 'bold 26px Helvetica, Arial';
 
   @Input() playSounds: boolean = true;
 
