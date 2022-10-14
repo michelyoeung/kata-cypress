@@ -39,4 +39,11 @@ export class StepFiveComponent implements OnInit {
   goNextStep(selected: string): void {
     this.onNextStep.emit(selected);
   }
+
+  openMapsPage(resultingRestaurant: string): void {
+    console.log('[TEST] name result : ', resultingRestaurant);
+    setTimeout(() => {
+      this.goNextStep(resultingRestaurant)
+    }, 3000);
+  }
 }

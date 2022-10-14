@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Observable, of } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
@@ -12,6 +12,7 @@ import { ApiService } from "../../api.service";
   styleUrls: ['./step-maps.component.scss']
 })
 export class StepMapsComponent implements OnInit {
+  @Input() resultingRestaurant: string = '';
   apiLoaded: Observable<boolean>;
 
   constructor(private httpClient: HttpClient, private _api: ApiService) {
@@ -23,6 +24,6 @@ export class StepMapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('[TEST] resultingRestaurant : ', this.resultingRestaurant);
   }
-
 }

@@ -1,2 +1,2 @@
 <p *ngIf="isLoading" class="w-full text-center">Please be patient...</p>
-<app-food-roulette *ngIf="!isLoading" [options]="this.choiceOfRestaurantsNames"></app-food-roulette>
+<app-food-roulette *ngIf="!isLoading" [options]="this.choiceOfRestaurantsNames" (foodDecisionEnd)="openMapsPage($event)"></app-food-roulette>

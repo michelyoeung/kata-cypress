@@ -9,7 +9,8 @@ import {ICircleStep} from "./components-library/circle-steps/circle-step.interfa
 export class AppComponent {
 
   choiceOfRestaurant: string[] = [];
-  MAX_STEPS = 4;
+  resultingRestaurant: string = '';
+  MAX_STEPS = 5;
 
   currentStep = 0;
   steps: ICircleStep[] = [
@@ -17,7 +18,8 @@ export class AppComponent {
     { id: 1, onClick: () => {} },
     { id: 2, onClick: () => {} },
     { id: 3, onClick: () => {} },
-    { id: 4, onClick: () => {} }
+    { id: 4, onClick: () => {} },
+    { id: 5, onClick: () => {} }
   ];
 
   stepData: any = {};
@@ -52,10 +54,15 @@ export class AppComponent {
         this.stepData['typeOfFood'] = stepData;
       } else if (fromStep === 4) {
         this.stepData['priceRange'] = stepData;
-      } else if (fromStep === 5) {
-        this.stepData['mapData'] = stepData;
       }
       this.currentStep += 1;
+    }
+  }
+
+  goFinalStep(resultingRestaurant: string): void {
+    if (this.currentStep < this.MAX_STEPS) {
+      this.currentStep += 1;
+      this.resultingRestaurant = resultingRestaurant;
     }
   }
 }
