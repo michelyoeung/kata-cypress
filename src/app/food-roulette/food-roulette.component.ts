@@ -28,9 +28,9 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     if (!this.curtainPlaneElement1) return;
     // addScripts()
 
-    this._curtains = new Curtains({
-      container: "curtains-canvas"
-    });
+    // this._curtains = new Curtains({
+    //   container: "curtains-canvas"
+    // });
     const params = {
       vertexShaderID: "plane-vs", // our vertex shader ID
       fragmentShaderID: "plane-fs", // our fragment shader ID
