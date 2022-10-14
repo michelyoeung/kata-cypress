@@ -1,12 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
-import {Observable, of, tap} from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { GOOGLE_API_KEY } from "../../env";
-=======
 import {ICircleStep} from "./components-library/circle-steps/circle-step.interface";
->>>>>>> 16d705befab454bb161f50edd768de5291a66168
 
 @Component({
   selector: 'app-root',
@@ -14,8 +9,7 @@ import {ICircleStep} from "./components-library/circle-steps/circle-step.interfa
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  choiceOfRestaurant: string[];
+  choiceOfRestaurant: string[] = [];
   MAX_STEPS = 4;
 
   currentStep = 0;
