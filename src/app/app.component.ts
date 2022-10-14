@@ -13,21 +13,25 @@ export class AppComponent {
 
   currentStep = 0;
   steps: ICircleStep[] = [
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} }
+    { id: 0, onClick: () => {} },
+    { id: 1, onClick: () => {} },
+    { id: 2, onClick: () => {} },
+    { id: 3, onClick: () => {} },
+    { id: 4, onClick: () => {} }
   ];
 
-  stepData = '';
+  stepData: any = {};
 
   isFirstStep(): boolean {
     return this.currentStep === 0;
   }
 
   isFirstContentStep(): boolean {
-    return this.currentStep === 1;
+    return this.currentStep === this.firstContentStep;
+  }
+
+  get firstContentStep(): number {
+    return 1;
   }
 
   isLastStep(): boolean {
@@ -40,9 +44,17 @@ export class AppComponent {
     }
   }
 
-  goNextStep(selected: string): void {
+  goNextStep(stepData: string, fromStep: number): void {
     if (this.currentStep < this.MAX_STEPS) {
-      this.stepData = selected;
+      if (fromStep === 2) {
+        this.stepData['regime'] = stepData;
+      } else if (fromStep === 3) {
+        this.stepData['typeOfFood'] = stepData;
+      } else if (fromStep === 4) {
+        this.stepData['priceRange'] = stepData;
+      } else if (fromStep === 5) {
+        this.stepData['mapData'] = stepData;
+      }
       this.currentStep += 1;
     }
   }

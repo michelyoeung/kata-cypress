@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./step-three.component.scss']
 })
 export class StepThreeComponent implements OnInit {
-  @Input() stepData = '';
+  @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
 
   constructor() { }

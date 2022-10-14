@@ -2,19 +2,11 @@
   <div class="flex items-center justify-between">
     <div class="flex items-center justify-center" *ngFor="let step of steps; let index = index" (click)="step?.onClick()">
       <span
-        [ngClass]="{ active: step.label === activeStep || isBeforeActiveStep(step), currentActive: (step.label === activeStep) && useCurrentActive, smallCircle: circleSize==='small' }"
+        [ngClass]="{ active: step.id === activeStep || isBeforeActiveStep(step), currentActive: (step.id === activeStep) && useCurrentActive, smallCircle: circleSize==='small' }"
         class="circle-step flex items-center justify-center"
         >{{ index + 1 }}</span
       >
       <div *ngIf="index + 1 < steps.length" [ngClass]="{ line: true, active: isBeforeActiveStep(step), smallLine: circleSize==='small'  }"></div>
     </div>
-  </div>
-  <div class="flex items-center justify-between text-center">
-    <span
-      [ngClass]="{ active: step.label === activeStep || isBeforeActiveStep(step), currentActive: (step.label === activeStep) && useCurrentActive, smallText: circleSize==='small' }"
-      *ngFor="let step of steps"
-      class="step-name"
-      >{{ step.label }}</span
-    >
   </div>
 </div>
