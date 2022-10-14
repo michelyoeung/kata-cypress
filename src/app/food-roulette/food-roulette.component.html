@@ -3,9 +3,14 @@
   <button class="m-auto" (click)="spin()">GO!!</button>
 </div>
 <div *ngIf="!showBtn" class="empty-filler"></div>
-<div class="container">
+<div class="effects-container">
     <canvas id="confetti-canvas"></canvas>
-    <!-- <canvas id="curtains-canvas"></canvas> -->
-    <!-- <div class="curtains-plane" #curtainPlane1></div> -->
+    <div id="curtains-canvas"></div>
+    <div class="curtains-plane one" #curtainPlane1>
+        <img src="assets/images/curtains.jpg"  crossorigin="">
+    </div>
+    <div class="curtains-plane two" #curtainPlane2>
+        <img src="assets/images/curtains.jpg"  crossorigin="">
+    </div>
 </div>
 
