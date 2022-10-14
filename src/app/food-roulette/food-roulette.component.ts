@@ -42,10 +42,10 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         },
       },
     };
-    const plane = new Plane(this._curtains, this.curtainPlaneElement1.nativeElement, params);
-    plane.onRender(() => {
-      plane.uniforms.time.value++; // update our time uniform value
-    });
+    // const plane = new Plane(this._curtains, this.curtainPlaneElement1.nativeElement, params);
+    // plane.onRender(() => {
+    //   plane.uniforms.time.value++; // update our time uniform value
+    // });
   }
 
 

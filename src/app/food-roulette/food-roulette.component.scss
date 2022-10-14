@@ -20,7 +20,6 @@ button {
     height: 100%;
     user-select: none;
     pointer-events: none;
-    z-index: 1;
 }
 
 #curtains-canvas {
@@ -31,7 +30,6 @@ button {
     height: 100%;
     user-select: none;
     pointer-events: none;
-    z-index: 2;
 }
 
 .container {
@@ -40,6 +38,8 @@ button {
     top: 0;
     height: 100vh;
     width: 100vw;
+    user-select: none;
+    pointer-events: none;
 
     .curtains-plane {
         position: absolute;
