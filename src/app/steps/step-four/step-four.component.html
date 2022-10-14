@@ -1,1 +1,6 @@
-<p>step-four works!</p>
+<div class="flex flex-col justify-center items-center w-100">
+  <app-chat-bubble class="flex flex-row justify-self-start w-100" text="Cheap" (clicked)="goNextStep('cheap')"></app-chat-bubble>
+  <app-chat-bubble class="flex flex-row justify-self-end w-100" text="Moderate" (clicked)="goNextStep('moderate')"></app-chat-bubble>
+  <app-chat-bubble class="flex flex-row justify-self-start w-100" text="Expensive" (clicked)="goNextStep('expensive')"></app-chat-bubble>
+  <app-chat-bubble class="flex flex-row justify-self-start w-100" text="ALL" (clicked)="goNextStep('all')"></app-chat-bubble>
+</div>
