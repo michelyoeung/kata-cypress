@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GOOGLE_API_KEY} from "../../env";
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 
@@ -14,6 +14,12 @@ export class ApiService {
 
 
   getNearbyRestaurant(options : any): void {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+      })
+    };
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position)=> {
         this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=500&type=restaurant&key=${GOOGLE_API_KEY}`).subscribe((results) => {
