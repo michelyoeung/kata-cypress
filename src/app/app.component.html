@@ -4,12 +4,12 @@
       <app-circle-steps *ngIf="!isFirstStep()" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
     </div>
     <div [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center mt-24">
-      <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
-      <app-step-two *ngSwitchCase="1" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-two>
-      <app-step-three *ngSwitchCase="2" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-three>
-      <app-step-four *ngSwitchCase="3" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-four>
-      <app-step-five *ngSwitchCase="4" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-five>
-      <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
+      <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
+      <app-step-two *ngSwitchCase="1" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 2)"></app-step-two>
+      <app-step-three *ngSwitchCase="2" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 3)"></app-step-three>
+      <app-step-four *ngSwitchCase="3" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 4)"></app-step-four>
+      <app-step-five *ngSwitchCase="4" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 5)"></app-step-five>
+      <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
     </div>
     <div class="flex flex-col justify-center items-center w-full mt-12">
       <button

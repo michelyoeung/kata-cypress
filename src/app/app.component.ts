@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     { id: 4, onClick: () => {} }
   ];
 
-  stepData = '';
+  stepData: any = {};
 
   constructor(private httpClient: HttpClient) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE', 'callback')
@@ -82,9 +82,17 @@ export class AppComponent implements OnInit {
     }
   }
 
-  goNextStep(selected: string): void {
+  goNextStep(stepData: string, fromStep: number): void {
     if (this.currentStep < this.MAX_STEPS) {
-      this.stepData = selected;
+      if (fromStep === 2) {
+        this.stepData['regime'] = stepData;
+      } else if (fromStep === 3) {
+        this.stepData['typeOfFood'] = stepData;
+      } else if (fromStep === 4) {
+        this.stepData['priceRange'] = stepData;
+      } else if (fromStep === 5) {
+        this.stepData['mapData'] = stepData;
+      }
       this.currentStep += 1;
     }
   }

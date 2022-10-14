@@ -10,7 +10,7 @@ import {GOOGLE_API_KEY} from "../../../../env";
   styleUrls: ['./step-five.component.scss']
 })
 export class StepFiveComponent implements OnInit {
-  @Input() stepData = '';
+  @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
   apiLoaded: Observable<boolean>;
 

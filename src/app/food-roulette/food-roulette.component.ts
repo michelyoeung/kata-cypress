@@ -28,6 +28,8 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   wheelDecisionSound = new Audio();
   bonAppetitSound = new Audio();
 
+  showBtn = true;
+
   private _startAngle = 0;
   private _arc = Math.PI / (this.options.length / 2);
   private _spinAngleStart = 0;
@@ -131,6 +133,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     this._spinTimeTotal = Math.random() * 3 + this.spinDuration;
     this.rotateWheel();
     if (this.playSounds) this.spinSound.play().then();
+    this.showBtn = false;
   }
 
   rotateWheel() {
