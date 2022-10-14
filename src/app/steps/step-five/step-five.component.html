@@ -1,1 +1,2 @@
-<app-food-roulette></app-food-roulette>
+<p *ngIf="isLoading" class="w-full text-center">Please be patient...</p>
+<app-food-roulette *ngIf="!isLoading" [options]="getRestaurantName()"></app-food-roulette>
