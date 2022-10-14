@@ -19,11 +19,11 @@ export class AppComponent implements OnInit {
 
   currentStep = 0;
   steps: ICircleStep[] = [
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} },
-    { label: '', onClick: () => {} }
+    { id: 0, onClick: () => {} },
+    { id: 1, onClick: () => {} },
+    { id: 2, onClick: () => {} },
+    { id: 3, onClick: () => {} },
+    { id: 4, onClick: () => {} }
   ];
 
   stepData = '';
