@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {GOOGLE_API_KEY} from "../../env";
-import {BehaviorSubject, Observable, of} from "rxjs";
+import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private _restaurants$ = new BehaviorSubject({} as any);
+  private _restaurants$ = new Subject();
   restaurants$ = this._restaurants$.asObservable();
 
   constructor(private httpClient: HttpClient) { }

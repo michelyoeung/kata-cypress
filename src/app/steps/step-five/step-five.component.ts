@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import {ApiService} from "../../api.service";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-step-five',
@@ -9,6 +10,7 @@ import {ApiService} from "../../api.service";
 export class StepFiveComponent implements OnInit {
   @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
+  choiceOfRestaurantsNames: string[] = [];
   choiceOfRestaurants : any;
   isLoading = true;
 
@@ -16,9 +18,18 @@ export class StepFiveComponent implements OnInit {
 
   ngOnInit(): void {
     this._api.getNearbyRestaurant(this.stepData);
-    this._api.restaurants$.subscribe((restaurants) => {
-      if (restaurants?.results?.length) {
+    this._api.restaurants$.pipe(take(1)).subscribe((restaurants) => {
+      if ((restaurants as any)?.results?.length) {
         this.choiceOfRestaurants = restaurants;
+        const restaurantsNames = this.choiceOfRestaurants.results
+          .filter((restaurant: any) =>
+            !restaurant.name.toLowerCase().startsWith('hotel')
+            && !restaurant.name.toLowerCase().startsWith('hôtel')
+            && !restaurant.name.toLowerCase().startsWith("l'hôtel")
+          )
+          .map((restaurant: any) => restaurant.name);
+        this.choiceOfRestaurantsNames = restaurantsNames.slice(0, 10);
+        console.log('[TEST] choiceOfRestaurantsNames :', this.choiceOfRestaurantsNames);
         this.isLoading = false;
       }
     });
@@ -27,13 +38,5 @@ export class StepFiveComponent implements OnInit {
 
   goNextStep(selected: string): void {
     this.onNextStep.emit(selected);
-  }
-
-  getRestaurantName(){
-    const choiceOfRestaurantName: string[] = [];
-    this.choiceOfRestaurants.results?.map((restaurant : any) => {
-      choiceOfRestaurantName.push(restaurant.name)
-    })
-    return choiceOfRestaurantName;
   }
 }
