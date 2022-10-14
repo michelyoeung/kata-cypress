@@ -10,15 +10,46 @@ import { Curtains, Plane } from 'curtainsjs';
   styleUrls: ['./food-roulette.component.scss']
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
-  @Input() height: number = 500;
-  @Input() width: number = 500;
-  @Input() options: string[] = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais", "K-Mart"];
+  @Input() height = 500;
+  @Input() width = 500;
+  @Input() options = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
 
-  @Input() stepSize: number = 25;
-  @Input() spinDuration: number = 5000; // ms
-  @Input() outsideRadius: number = 200;
-  @Input() textRadius: number = 160;
-  @Input() insideRadius: number = 125;
+  @Input() stepSize = 25;
+  @Input() spinDuration = 5000; // ms
+  @Input() outsideRadius = 200;
+  @Input() textRadius = 160;
+  @Input() insideRadius = 125;
+
+  @Input() itemFont = 'bold 12px Helvetica, Arial';
+  @Input() decisionFont = 'bold 30px Helvetica, Arial';
+
+  @Input() playSounds: boolean = true;
+
+  @Output() spinStart: EventEmitter<void> = new EventEmitter<void>();
+  @Output() foodDecisionEnd: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('roulette', { static: false }) canvas!: ElementRef<HTMLCanvasElement>;
+
+  _curtainPlane1?: any;
+  _confetti_1?: any;
+  _confetti_2?: any;
+
+  @ViewChild('curtainPlane1')
+  curtainPlaneElement1?: ElementRef;
+  @ViewChild('curtainPlane2')
+  curtainPlaneElement2?: ElementRef;
+
+  spinSound = new Audio();
+  wheelDecisionSound = new Audio();
+  bonAppetitSound = new Audio();
+
+  showBtn = true;
+
+  private _startAngle = 0;
+  private _arc = Math.PI / (this.options.length / 2);
+  private _spinAngleStart = 0;
+  private _spinTimeout: any;
+  private _curSpinTime = 0;
+  private _spinTimeTotal = 0;
 
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
@@ -101,40 +132,6 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
     });
   }
-
-
-
-  _curtainPlane1?: any;
-  _confetti_1?: any;
-  _confetti_2?: any;
-
-  @ViewChild('curtainPlane1')
-  curtainPlaneElement1?: ElementRef;
-  @ViewChild('curtainPlane2')
-  curtainPlaneElement2?: ElementRef;
-
-  @Input() itemFont: string = 'bold 12px Helvetica, Arial';
-  @Input() decisionFont: string = 'bold 30px Helvetica, Arial';
-
-  @Input() playSounds: boolean = true;
-
-  @Output() spinStart: EventEmitter<void> = new EventEmitter<void>();
-  @Output() foodDecisionEnd: EventEmitter<string> = new EventEmitter<string>();
-
-  spinSound = new Audio();
-  wheelDecisionSound = new Audio();
-  bonAppetitSound = new Audio();
-
-  showBtn = true;
-
-  private _startAngle = 0;
-  private _arc = Math.PI / (this.options.length / 2);
-  private _spinAngleStart = 0;
-  private _spinTimeout: any;
-  private _curSpinTime = 0;
-  private _spinTimeTotal = 0;
-
-  @ViewChild('roulette', { static: false }) canvas!: ElementRef<HTMLCanvasElement>;
 
   ngOnInit(): void {
     this.spinSound.src = "../../assets/sounds/wheel-spin.wav";
