@@ -8,7 +8,7 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outpu
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
   @Input() height: number = 500;
   @Input() width: number = 500;
-  @Input() options: string[] = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
+  @Input() options: string[] = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais", "K-Mart"];
 
   @Input() stepSize: number = 25;
   @Input() spinDuration: number = 5000; // ms
@@ -77,7 +77,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   drawRouletteWheel() {
     if (this.canvas.nativeElement.getContext) {
       const ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
-      ctx.clearRect(0, 0, 500, 500);
+      ctx.clearRect(0, 0, this.width, this.height);
 
       ctx.strokeStyle = "black";
       ctx.lineWidth = 2;
@@ -90,8 +90,8 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         ctx.fillStyle = this.getColor(i, this.options.length);
 
         ctx.beginPath();
-        ctx.arc(250, 250, this.outsideRadius, angle, angle + this._arc, false);
-        ctx.arc(250, 250, this.insideRadius, angle + this._arc, angle, true);
+        ctx.arc(this.width/2, this.height/2, this.outsideRadius, angle, angle + this._arc, false);
+        ctx.arc(this.width/2, this.height/2, this.insideRadius, angle + this._arc, angle, true);
         ctx.stroke();
         ctx.fill();
 
@@ -101,8 +101,8 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         ctx.shadowBlur = 5;
         ctx.shadowColor = "rgb(20,20,20)";
         ctx.fillStyle = "white";
-        ctx.translate(250 + Math.cos(angle + this._arc / 2) * this.textRadius,
-          250 + Math.sin(angle + this._arc / 2) * this.textRadius);
+        ctx.translate(this.width/2 + Math.cos(angle + this._arc / 2) * this.textRadius,
+          this.height/2 + Math.sin(angle + this._arc / 2) * this.textRadius);
         ctx.rotate(angle + this._arc / 2 + Math.PI / 2);
         const text = this.options[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
@@ -112,14 +112,14 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       //Arrow
       ctx.fillStyle = "black";
       ctx.beginPath();
-      ctx.moveTo(250 - 4, 250 - (this.outsideRadius + 5));
-      ctx.lineTo(250 + 4, 250 - (this.outsideRadius + 5));
-      ctx.lineTo(250 + 4, 250 - (this.outsideRadius - 5));
-      ctx.lineTo(250 + 9, 250 - (this.outsideRadius - 5));
-      ctx.lineTo(250 + 0, 250 - (this.outsideRadius - 13));
-      ctx.lineTo(250 - 9, 250 - (this.outsideRadius - 5));
-      ctx.lineTo(250 - 4, 250 - (this.outsideRadius - 5));
-      ctx.lineTo(250 - 4, 250 - (this.outsideRadius + 5));
+      ctx.moveTo(this.width/2 - 4, this.height/2 - (this.outsideRadius + 5));
+      ctx.lineTo(this.width/2 + 4, this.height/2 - (this.outsideRadius + 5));
+      ctx.lineTo(this.width/2 + 4, this.height/2 - (this.outsideRadius - 5));
+      ctx.lineTo(this.width/2 + 9, this.height/2 - (this.outsideRadius - 5));
+      ctx.lineTo(this.width/2 + 0, this.height/2 - (this.outsideRadius - 13));
+      ctx.lineTo(this.width/2 - 9, this.height/2 - (this.outsideRadius - 5));
+      ctx.lineTo(this.width/2 - 4, this.height/2 - (this.outsideRadius - 5));
+      ctx.lineTo(this.width/2 - 4, this.height/2 - (this.outsideRadius + 5));
       ctx.fill();
     }
   }
@@ -155,7 +155,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     ctx.save();
     ctx.font = this.decisionFont;
     const text = this.options[index]
-    ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+    ctx.fillText(text, this.width/2 - ctx.measureText(text).width/2, this.height/2 + 10);
     ctx.restore();
 
     if (this.playSounds) {
