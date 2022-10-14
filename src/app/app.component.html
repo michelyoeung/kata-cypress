@@ -1,5 +1,22 @@
-<div>
-  <h1>MAIN ROULETTE!!!</h1>
-
-  <app-food-roulette></app-food-roulette>
+<div class="main flex flex-col justify-center items-center h-100 w-full">
+  <div class="flex flex-col justify-center items-center w-4/5">
+    <div class="flex flex-col justify-center items-center w-100 mt-24">
+      <app-circle-steps *ngIf="!isFirstStep()" [steps]="steps" [activeStep]="currentStep.toString()"></app-circle-steps>
+    </div>
+    <div [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center mt-24">
+      <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
+      <app-step-two *ngSwitchCase="1" class="w-full" (onNextStep)="goNextStep($event)"></app-step-two>
+      <app-step-three *ngSwitchCase="2" class="w-full" (onNextStep)="goNextStep($event)"></app-step-three>
+      <app-step-four *ngSwitchCase="3" class="w-full" (onNextStep)="goNextStep($event)"></app-step-four>
+      <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
+    </div>
+    <div class="flex flex-col justify-center items-center w-full mt-12">
+      <button
+        *ngIf="!isFirstStep() && !isFirstContentStep()"
+        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        (click)="goPreviousStep()">
+        Previous
+      </button>
+    </div>
+  </div>
 </div>

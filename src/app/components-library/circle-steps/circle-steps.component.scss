@@ -1,0 +1,76 @@
+.circle-step {
+  border: 3px solid;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  &.smallCircle {
+    border: 1px solid;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    font-weight: 400;
+
+  }
+  &.currentActive {
+    outline-width: 5px;
+    outline-style: solid;
+    border-width: 0px;
+  }
+
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+
+  color: #8c97aa;
+  border-color: #8c97aa;
+
+  &.active {
+    color: #33659a;
+    border-color: #33659a;
+  }
+
+  &.currentActive {
+    color: #ffffff;
+    background-color: #6296e2;
+    outline-color: rgba(#6296e2, 0.15);
+  }
+}
+
+.line {
+  background-color: #8c97aa;
+  &.active {
+    background-color: #33659a;
+  }
+}
+
+.step-name {
+  font-family: Arial, sans-serif;
+  color: #8c97aa;
+
+  &.active {
+    color: #33659a;
+  }
+
+  &.currentActive {
+    color: #ffffff;
+  }
+}
+
+.line {
+  width: 9rem;
+  height: 2px;
+  &.smallLine {
+    width: 80px;
+    height: 1px;
+  }
+}
+
+.step-name {
+  width: calc(9rem + 50px);
+  &.smallText {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 12px;
+    width: calc(80px + 42px);
+    margin-top: 11px;
+  }
+}

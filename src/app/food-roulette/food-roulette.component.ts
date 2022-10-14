@@ -7,8 +7,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@a
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
-  constructor() {
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
