@@ -6,13 +6,6 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outpu
   styleUrls: ['./food-roulette.component.scss']
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
-
-  ngAfterViewInit(): void {
-    this.drawRouletteWheel();
-  }
-
-  ngOnInit(): void {}
-
   @Input() height = 500;
   @Input() width = 500;
   @Input() options = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
@@ -26,8 +19,14 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   @Input() itemFont = 'bold 12px Helvetica, Arial';
   @Input() decisionFont = 'bold 30px Helvetica, Arial';
 
+  @Input() playSounds = true;
+
   @Output() spinStart: EventEmitter<void> = new EventEmitter<void>();
   @Output() foodDecisionEnd: EventEmitter<string> = new EventEmitter<string>();
+
+  spinSound = new Audio();
+  wheelDecisionSound = new Audio();
+  bonAppetitSound = new Audio();
 
   private _startAngle = 0;
   private _arc = Math.PI / (this.options.length / 2);
@@ -37,6 +36,21 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   private _spinTimeTotal = 0;
 
   @ViewChild('roulette', {static: false}) canvas!: ElementRef<HTMLCanvasElement>;
+
+  ngAfterViewInit(): void {
+    this.drawRouletteWheel();
+  }
+
+  ngOnInit(): void {
+    this.spinSound.src = "../../assets/sounds/wheel-spin.wav";
+    this.spinSound.load();
+
+    this.wheelDecisionSound.src = "../../assets/sounds/wheel-choice.mp3";
+    this.wheelDecisionSound.load();
+
+    this.bonAppetitSound.src = "../../assets/sounds/bon-appetit.mp3";
+    this.bonAppetitSound.load();
+  }
 
   byte2Hex(n: number) {
     const nybHexString = "0123456789ABCDEF";
@@ -83,7 +97,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
         ctx.save();
         ctx.shadowOffsetX = 1;
-        ctx.shadowOffsetY = 2;
+        ctx.shadowOffsetY = 1;
         ctx.shadowBlur = 0;
         ctx.shadowColor = "rgb(20,20,20)";
         ctx.fillStyle = "white";
@@ -115,8 +129,8 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     this._spinAngleStart = Math.random() * 125 + 10;
     this._curSpinTime = 0;
     this._spinTimeTotal = Math.random() * 3 + this.spinDuration;
-    console.log('spinTimeTotal', this._spinTimeTotal);
     this.rotateWheel();
+    if (this.playSounds) this.spinSound.play().then();
   }
 
   rotateWheel() {
@@ -144,6 +158,10 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
 
+    if (this.playSounds) {
+      this.wheelDecisionSound.play();
+      setTimeout(() => this.bonAppetitSound.play(), 800);
+    }
     this.foodDecisionEnd.emit(text);
   }
 
