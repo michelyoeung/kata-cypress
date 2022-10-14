@@ -5,9 +5,10 @@
     </div>
     <div [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center mt-24">
       <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
-      <app-step-two *ngSwitchCase="1" class="w-full" (onNextStep)="goNextStep($event)"></app-step-two>
-      <app-step-three *ngSwitchCase="2" class="w-full" (onNextStep)="goNextStep($event)"></app-step-three>
-      <app-step-four *ngSwitchCase="3" class="w-full" (onNextStep)="goNextStep($event)"></app-step-four>
+      <app-step-two *ngSwitchCase="1" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-two>
+      <app-step-three *ngSwitchCase="2" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-three>
+      <app-step-four *ngSwitchCase="3" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-four>
+      <app-step-five *ngSwitchCase="4" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event)"></app-step-five>
       <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event)"></app-step-one>
     </div>
     <div class="flex flex-col justify-center items-center w-full mt-12">
