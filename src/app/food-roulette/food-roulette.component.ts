@@ -6,20 +6,20 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outpu
   styleUrls: ['./food-roulette.component.scss']
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
-  @Input() height = 500;
-  @Input() width = 500;
-  @Input() options = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
+  @Input() height: number = 500;
+  @Input() width: number = 500;
+  @Input() options: string[] = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
 
-  @Input() stepSize = 25;
-  @Input() spinDuration = 5000; // ms
-  @Input() outsideRadius = 200;
-  @Input() textRadius = 160;
-  @Input() insideRadius = 125;
+  @Input() stepSize: number = 25;
+  @Input() spinDuration: number = 5000; // ms
+  @Input() outsideRadius: number = 200;
+  @Input() textRadius: number = 160;
+  @Input() insideRadius: number = 125;
 
-  @Input() itemFont = 'bold 12px Helvetica, Arial';
-  @Input() decisionFont = 'bold 30px Helvetica, Arial';
+  @Input() itemFont: string = 'bold 12px Helvetica, Arial';
+  @Input() decisionFont: string = 'bold 30px Helvetica, Arial';
 
-  @Input() playSounds = true;
+  @Input() playSounds: boolean = true;
 
   @Output() spinStart: EventEmitter<void> = new EventEmitter<void>();
   @Output() foodDecisionEnd: EventEmitter<string> = new EventEmitter<string>();
@@ -126,7 +126,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
   spin() {
     this.spinStart.emit();
-    this._spinAngleStart = Math.random() * 125 + 10;
+    this._spinAngleStart = Math.random() * 130 + 10;
     this._curSpinTime = 0;
     this._spinTimeTotal = Math.random() * 3 + this.spinDuration;
     this.rotateWheel();
