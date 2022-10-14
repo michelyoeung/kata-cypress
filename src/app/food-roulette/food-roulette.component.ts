@@ -141,6 +141,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     this.wheelDecisionSound.load();
 
     this.bonAppetitSound.src = "../../assets/sounds/bon-appetit.mp3";
+    this.bonAppetitSound.volume = 1;
     this.bonAppetitSound.load();
   }
 
