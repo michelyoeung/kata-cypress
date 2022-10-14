@@ -27,7 +27,7 @@ export class StepFiveComponent implements OnInit {
             && !restaurant.name.toLowerCase().startsWith('hôtel')
             && !restaurant.name.toLowerCase().startsWith("l'hôtel")
           )
-          .map((restaurant: any) => restaurant.name.length < 20 ? restaurant.name : restaurant.name.slice(0, 19) + '...');
+          .map((restaurant: any) => restaurant.name);
         this.choiceOfRestaurantsNames = restaurantsNames.slice(0, 10);
         console.log('[TEST] choiceOfRestaurantsNames :', this.choiceOfRestaurantsNames);
         this.isLoading = false;
