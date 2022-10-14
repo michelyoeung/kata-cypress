@@ -1,8 +1,4 @@
 import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {catchError, map} from "rxjs/operators";
-import {Observable, of} from "rxjs";
-import {GOOGLE_API_KEY} from "../../../../env";
 import {ApiService} from "../../api.service";
 
 @Component({
@@ -13,23 +9,31 @@ import {ApiService} from "../../api.service";
 export class StepFiveComponent implements OnInit {
   @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
-  apiLoaded: Observable<boolean>;
-  choiceOfRestaurant : string[] = [];
+  choiceOfRestaurants : any;
+  isLoading = true;
 
-  constructor(private httpClient: HttpClient, private _api: ApiService) {
-    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`, 'callback')
-      .pipe(
-        map(() => true),
-        catchError(() => of(false)),
-      );
-  }
+  constructor(private _api: ApiService) {}
 
   ngOnInit(): void {
     this._api.getNearbyRestaurant(this.stepData);
+    this._api.restaurants$.subscribe((restaurants) => {
+      if (restaurants?.results?.length) {
+        this.choiceOfRestaurants = restaurants;
+        this.isLoading = false;
+      }
+    });
     console.log(this.stepData);
   }
 
   goNextStep(selected: string): void {
     this.onNextStep.emit(selected);
+  }
+
+  getRestaurantName(){
+    const choiceOfRestaurantName: string[] = [];
+    this.choiceOfRestaurants.results?.map((restaurant : any) => {
+      choiceOfRestaurantName.push(restaurant.name)
+    })
+    return choiceOfRestaurantName;
   }
 }

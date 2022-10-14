@@ -17,6 +17,7 @@ import { CircleStepsComponent } from "./components-library/circle-steps/circle-s
 import { ChatBubbleComponent } from "./components-library/chat-bubble/chat-bubble.component";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { StepMapsComponent } from './steps/step-maps/step-maps.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { environment } from '../environments/environment';
     StepTwoComponent,
     StepThreeComponent,
     StepFourComponent,
-    StepFiveComponent
+    StepFiveComponent,
+    StepMapsComponent
   ],
     imports: [
         BrowserModule,
