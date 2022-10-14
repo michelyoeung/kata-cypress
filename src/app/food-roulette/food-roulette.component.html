@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 <canvas #roulette class="cursor-pointer m-auto" id="canvas" [width]="width" [height]="height" (click)="spin()"></canvas>
 <div *ngIf="showBtn" class="flex justify-center items-center">
   <button class="m-auto" (click)="spin()">GO!!</button>
 </div>
 <div *ngIf="!showBtn" class="empty-filler"></div>
-=======
-<input type="button" value="spin" id='spin' (click)="spin()" />
-<canvas #roulette id="canvas" [width]="width" [height]="height"></canvas>
 <div class="container">
     <canvas id="confetti-canvas"></canvas>
     <canvas id="curtains-canvas"></canvas>
     <div class="curtains-plane" #curtainPlane1></div>
 </div>
 
->>>>>>> fbb9446... confetti and began working on curtains
