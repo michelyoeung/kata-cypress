@@ -36,14 +36,14 @@ export class StepFiveComponent implements OnInit {
     console.log(this.stepData);
   }
 
-  goNextStep(selected: string): void {
+  goNextStep(selected: any): void {
     this.onNextStep.emit(selected);
   }
 
-  openMapsPage(resultingRestaurant: string): void {
-    console.log('[TEST] name result : ', resultingRestaurant);
+  openMapsPage(resultingRestaurantName: string): void {
+    const restaurant = this.choiceOfRestaurants.results?.find((restaurant: any) => restaurant.name === resultingRestaurantName);
     setTimeout(() => {
-      this.goNextStep(resultingRestaurant)
+      this.goNextStep(restaurant)
     }, 3000);
   }
 }

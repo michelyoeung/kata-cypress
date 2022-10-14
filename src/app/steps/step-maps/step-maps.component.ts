@@ -12,7 +12,7 @@ import { ApiService } from "../../api.service";
   styleUrls: ['./step-maps.component.scss']
 })
 export class StepMapsComponent implements OnInit {
-  @Input() resultingRestaurant: string = '';
+  @Input() resultingRestaurant: any = null;
   apiLoaded: Observable<boolean>;
 
   constructor(private httpClient: HttpClient, private _api: ApiService) {

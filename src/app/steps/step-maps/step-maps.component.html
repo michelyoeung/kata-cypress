@@ -1,3 +1,5 @@
-<div *ngIf="apiLoaded">
-  <google-map></google-map>
+<div *ngIf="apiLoaded && resultingRestaurant" class="flex flex-row justify-center items-center w-full">
+  <google-map [options]="{
+    center: {lat: resultingRestaurant?.geometry?.location?.lat, lng: resultingRestaurant?.geometry?.location?.lng}
+  }"></google-map>
 </div>

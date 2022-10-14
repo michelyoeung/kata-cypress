@@ -16,7 +16,7 @@ export class ApiService {
   getNearbyRestaurant(options : any): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position)=> {
-        this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=1000&type=restaurant&key=${GOOGLE_API_KEY}`).subscribe((results) => {
+        this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=500&type=restaurant&key=${GOOGLE_API_KEY}`).subscribe((results) => {
           this._restaurants$.next(results);
         })
       });
