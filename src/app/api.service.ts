@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GOOGLE_API_KEY} from "../../env";
-import {BehaviorSubject, Observable, of, Subject} from "rxjs";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,26 @@ export class ApiService {
         'Access-Control-Allow-Origin':'*',
       })
     };
-
+    let minprice: string = '';
+    let maxprice: string = '';
+    console.log("options", options)
+    switch(options.priceRange) {
+      case 'low':
+        minprice = '0'
+        maxprice = '1'
+        break;
+      case 'average':
+        minprice = '1'
+        maxprice = '2'
+        break;
+      case 'high' :
+        minprice = '2'
+        maxprice = '4'
+        break;
+    }
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( (position)=> {
-        this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=500&type=restaurant&key=${GOOGLE_API_KEY}`).subscribe((results) => {
+        this.httpClient.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.coords.latitude}%2C${position.coords.longitude}&radius=500&minprice=${minprice}&maxprice=${maxprice}&type=restaurant&key=${GOOGLE_API_KEY}`).subscribe((results) => {
           this._restaurants$.next(results);
         })
       });
