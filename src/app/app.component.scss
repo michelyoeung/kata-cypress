@@ -1,4 +1,12 @@
-.steps {
-  height: 60vh !important;
+
+.main {
+  height: 100vh !important;
   width: 100vw;
+  padding: 64px;
+  max-height: 1440px;
+}
+
+.steps {
+  height: 100%;
+  width: 100%;
 }
