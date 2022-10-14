@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, map} from "rxjs/operators";
 import {Observable, of} from "rxjs";
@@ -9,6 +9,7 @@ import {Observable, of} from "rxjs";
   styleUrls: ['./step-five.component.scss']
 })
 export class StepFiveComponent implements OnInit {
+  @Input() stepData = '';
   @Output() onNextStep = new EventEmitter<string>();
   apiLoaded: Observable<boolean>;
 
@@ -21,6 +22,7 @@ export class StepFiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.stepData);
   }
 
   goNextStep(selected: string): void {

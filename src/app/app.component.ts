@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
     { label: '', onClick: () => {} },
     { label: '', onClick: () => {} },
     { label: '', onClick: () => {} }
-  ]
+  ];
+
+  stepData = '';
 
   constructor(private httpClient: HttpClient) {
     this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE', 'callback')
@@ -78,6 +80,7 @@ export class AppComponent implements OnInit {
 
   goNextStep(selected: string): void {
     if (this.currentStep < this.MAX_STEPS) {
+      this.stepData = selected;
       this.currentStep += 1;
     }
   }
