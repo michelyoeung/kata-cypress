@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-step-two',
@@ -6,11 +6,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./step-two.component.scss']
 })
 export class StepTwoComponent implements OnInit {
+  @Input() stepData = '';
   @Output() onNextStep = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.stepData);
   }
 
   goNextStep(selected: string): void {
