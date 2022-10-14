@@ -25,15 +25,17 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     this._confetti_1 = new ConfettiGenerator({ target: 'confetti-canvas', start_from_edge: true, clock: 100 });
     this._confetti_2 = new JSConfetti({});
 
-    if (!this.curtainPlaneElement1) return;
+    if (!this.curtainPlaneElement1 || !this.curtainPlaneElement2) return;
     // addScripts()
 
-    // this._curtains = new Curtains({
-    //   container: "curtains-canvas"
-    // });
+    const curtains = new Curtains({
+      container: "curtains-canvas"
+    });
     const params = {
       vertexShaderID: "plane-vs", // our vertex shader ID
       fragmentShaderID: "plane-fs", // our fragment shader ID
+      widthSegments: 10,
+      heightSegments: 10,
       uniforms: {
         time: {
           name: "uTime", // uniform name that will be passed to our shaders
@@ -42,21 +44,38 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         },
       },
     };
-    // const plane = new Plane(this._curtains, this.curtainPlaneElement1.nativeElement, params);
-    // plane.onRender(() => {
-    //   plane.uniforms.time.value++; // update our time uniform value
-    // });
+    const plane1 = new Plane(curtains, this.curtainPlaneElement1.nativeElement, params);
+    const plane2 = new Plane(curtains, this.curtainPlaneElement2.nativeElement, params);
+
+    plane1.onRender(() => {
+      plane1.uniforms.time.value++;
+      setTimeout(() => {
+        plane1.relativeTranslation.x -= 10;
+      }, 500)
+    });
+
+    plane2.onRender(() => {
+      plane2.uniforms.time.value++;
+      setTimeout(() => {
+        plane2.relativeTranslation.x += 10;
+      }, 500)
+    });
+
+    curtains.onRender(() => {
+
+    });
   }
 
 
 
-  _curtains?: any;
   _curtainPlane1?: any;
   _confetti_1?: any;
   _confetti_2?: any;
 
   @ViewChild('curtainPlane1')
   curtainPlaneElement1?: ElementRef;
+  @ViewChild('curtainPlane2')
+  curtainPlaneElement2?: ElementRef;
 
   @Input() itemFont: string = 'bold 12px Helvetica, Arial';
   @Input() decisionFont: string = 'bold 30px Helvetica, Arial';

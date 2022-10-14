@@ -32,7 +32,7 @@ button {
     pointer-events: none;
 }
 
-.container {
+.effects-container {
     position: absolute;
     left: 0;
     top: 0;
@@ -43,15 +43,24 @@ button {
 
     .curtains-plane {
         position: absolute;
-        left: 0;
         top: 0;
-        width: 100%;
+        width: 50%;
         height: 100%;
         user-select: none;
         pointer-events: none;
         z-index: 2;
-        background-image: url('../../assets/images/curtains.jpg');
-        background-size: cover;
+
+        &.one {
+            left: 0;
+        }
+
+        &.two {
+            right: 0;
+        }
+
+        img {
+            display: none;
+        }
     }
 
 }
