@@ -43,3 +43,6 @@ Thumbs.db
 
 # Env
 env.ts
+
+# Npm
+package-lock.json
