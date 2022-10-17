@@ -21,7 +21,6 @@ export class ApiService {
     };
     let minprice: string = '';
     let maxprice: string = '';
-    console.log("options", options)
     switch(options.priceRange) {
       case 'cheap':
         minprice = '0'

@@ -34,12 +34,10 @@ export class StepFiveComponent implements OnInit {
             )
             .map((restaurant: any) => restaurant.name);
           this.choiceOfRestaurantsNames = restaurantsNames.slice(0, 10);
-          console.log('[TEST] choiceOfRestaurantsNames :', this.choiceOfRestaurantsNames);
           this.isLoading = false;
         }
       }
     });
-    console.log(this.stepData);
   }
 
   goNextStep(selected: any): void {

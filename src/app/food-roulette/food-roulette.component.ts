@@ -45,11 +45,14 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
   showBtn = true;
 
   private _startAngle = 0;
-  private _arc = Math.PI / (this.options.length / 2);
   private _spinAngleStart = 0;
   private _spinTimeout: any;
   private _curSpinTime = 0;
   private _spinTimeTotal = 0;
+
+  private get _arc(): number {
+    return Math.PI / (this.options.length / 2);
+  }
 
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
@@ -229,7 +232,6 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
   rotateWheel() {
     this._curSpinTime += this.stepSize;
-    console.log('spintime', this._curSpinTime);
     if (this._curSpinTime >= this._spinTimeTotal) {
       this.stopRotateWheel();
       return;
