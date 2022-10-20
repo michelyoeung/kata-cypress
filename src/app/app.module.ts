@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-
-
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,9 +14,9 @@ import { StepFourComponent } from './steps/step-four/step-four.component';
 import { StepFiveComponent } from './steps/step-five/step-five.component';
 import { CircleStepsComponent } from "./components-library/circle-steps/circle-steps.component";
 import { ChatBubbleComponent } from "./components-library/chat-bubble/chat-bubble.component";
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { StepResultComponent } from "./steps/step-result/step-result.component";
+
 import { environment } from '../environments/environment';
-import { StepMapsComponent } from './steps/step-maps/step-maps.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { StepMapsComponent } from './steps/step-maps/step-maps.component';
     StepThreeComponent,
     StepFourComponent,
     StepFiveComponent,
-    StepMapsComponent
+    StepResultComponent,
   ],
     imports: [
         BrowserModule,

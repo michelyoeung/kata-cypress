@@ -19,7 +19,7 @@ export class StepFiveComponent implements OnInit {
 
   ngOnInit(): void {
     this._api.restaurants$.pipe(take(1)).subscribe((restaurants) => {
-      if((restaurants as any)?.status === "ZERO_RESULTS"){
+      if ((restaurants as any)?.status === "ZERO_RESULTS"){
         this.noRestaurant = true;
         this.isLoading = false;
       } else {
