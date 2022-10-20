@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from "@angular/service-worker";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FoodRouletteComponent } from './food-roulette/food-roulette.component';
+import { ProfileComponent } from "./profile/profile.component";
 import { StepOneComponent } from './steps/step-one/step-one.component';
 import { StepTwoComponent } from './steps/step-two/step-two.component';
 import { StepThreeComponent } from './steps/step-three/step-three.component';
@@ -24,6 +23,7 @@ import { environment } from '../environments/environment';
     CircleStepsComponent,
     ChatBubbleComponent,
     FoodRouletteComponent,
+    ProfileComponent,
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent,
@@ -34,9 +34,6 @@ import { environment } from '../environments/environment';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        GoogleMapsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
           enabled: environment.production,
           // Register the ServiceWorker as soon as the application is stable

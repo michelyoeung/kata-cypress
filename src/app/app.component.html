@@ -1,6 +1,8 @@
 <div class="main flex flex-col justify-center items-center">
-  <app-circle-steps *ngIf="!isFirstStep()" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
-  <div [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center">
+  <app-chat-bubble text="Mon Profil" (clicked)="openProfile()"></app-chat-bubble>
+  <app-profile *ngIf="onProfile"></app-profile>
+  <app-circle-steps *ngIf="!isFirstStep() && !onProfile" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
+  <div *ngIf="!onProfile" [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center">
     <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
     <app-step-two *ngSwitchCase="1" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 2)">
     </app-step-two>

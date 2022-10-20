@@ -11,6 +11,7 @@ export class AppComponent {
   choiceOfRestaurant: string[] = [];
   resultingRestaurant: string = '';
   MAX_STEPS = 5;
+  onProfile: boolean = false;
 
   currentStep = 0;
   steps: ICircleStep[] = [
@@ -64,5 +65,9 @@ export class AppComponent {
       this.currentStep += 1;
       this.resultingRestaurant = resultingRestaurant;
     }
+  }
+
+  openProfile(): void {
+    this.onProfile = !this.onProfile;
   }
 }
