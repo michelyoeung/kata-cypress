@@ -1,12 +1,2 @@
-<div *ngIf="apiLoaded && resultingRestaurant" class="flex flex-row mt-5 justify-center items-center w-full">
-  <google-map #map [options]="{
-    center: {lat: resultingRestaurant?.geometry?.location?.lat, lng: resultingRestaurant?.geometry?.location?.lng}
-  }">
-    <map-marker
-      [position]="this.markerPosition"
-      [label]="resultingRestaurant.name"
-      [title]="resultingRestaurant.name"
-    >
-    </map-marker>
-  </google-map>
+<div *ngIf="resultingRestaurant" class="flex flex-row mt-5 justify-center items-center w-full">
 </div>
