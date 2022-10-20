@@ -18,7 +18,6 @@ export class StepFiveComponent implements OnInit {
   constructor(private _api: ApiService) {}
 
   ngOnInit(): void {
-    this._api.getNearbyRestaurant(this.stepData);
     this._api.restaurants$.pipe(take(1)).subscribe((restaurants) => {
       if((restaurants as any)?.status === "ZERO_RESULTS"){
         this.noRestaurant = true;
@@ -38,6 +37,7 @@ export class StepFiveComponent implements OnInit {
         }
       }
     });
+    this._api.getNearbyRestaurant(this.stepData);
   }
 
   goNextStep(selected: any): void {
