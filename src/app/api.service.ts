@@ -32,12 +32,8 @@ export class ApiService {
         maxprice = '4'
         break;
     }
-    if (navigator.geolocation) {
-      this._restaurants$.next({
-        results: fakeRestaurant,
-      });
-    } else {
-      console.log('No support for geolocation');
-    }
+    this._restaurants$.next({
+      results: fakeRestaurant,
+    });
   }
 }
