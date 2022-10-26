@@ -7,4 +7,13 @@ import {Component, Input} from '@angular/core';
 })
 export class StepResultComponent {
   @Input() resultingRestaurant: any = null;
+
+  get priceLevel(): number {
+    const priceLevel = parseInt(this.resultingRestaurant?.price_level?.toString() || "0", 10);
+    return !isNaN(priceLevel) ? priceLevel : 0;
+  }
+
+  get priceLevelArray(): number[] {
+    return Array(this.priceLevel).fill('');
+  }
 }

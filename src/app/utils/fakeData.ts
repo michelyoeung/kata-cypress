@@ -1,5 +1,6 @@
-export let fakeRestaurant =[
+const fakeRestaurants = [
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -20,7 +21,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Warwick Paris",
+        "name": " Warwick Paris ",
         "opening_hours": {
             "open_now": true
         },
@@ -53,6 +54,7 @@ export let fakeRestaurant =[
         "vicinity": "5 Rue de Berri, Paris"
     },
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -73,7 +75,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel Vernet, Champs - Élysées",
+        "name": "Hôtel Vernet, Champs - Élysées ",
         "opening_hours": {
             "open_now": true
         },
@@ -107,6 +109,7 @@ export let fakeRestaurant =[
         "vicinity": "25 Rue Vernet, Paris"
     },
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -127,7 +130,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel La Maison Champs Elysées.",
+        "name": " Hôtel La Maison Champs Elysées.",
         "opening_hours": {
             "open_now": true
         },
@@ -160,6 +163,7 @@ export let fakeRestaurant =[
         "vicinity": "Au sein de La Maison des Centraliens, 8 Rue Jean Goujon, Paris"
     },
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -180,7 +184,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "L'Hôtel du Collectionneur",
+        "name": "L'Hôtel du Collectionneur ",
         "photos": [
             {
                 "height": 2002,
@@ -210,6 +214,7 @@ export let fakeRestaurant =[
         "vicinity": "51-57 Rue de Courcelles, Paris"
     },
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -230,7 +235,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Le Royal Monceau - Raffles Paris",
+        "name": " Le Royal Monceau - Raffles Paris",
         "photos": [
             {
                 "height": 3144,
@@ -260,6 +265,7 @@ export let fakeRestaurant =[
         "vicinity": "37 Avenue Hoche, Paris"
     },
     {
+        "price_level": "1",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -280,7 +286,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel San Régis",
+        "name": "Hôtel San Régis ",
         "photos": [
             {
                 "height": 1378,
@@ -310,6 +316,7 @@ export let fakeRestaurant =[
         "vicinity": "12 Rue Jean Goujon, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -330,7 +337,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel de Sers",
+        "name": " Hôtel de Sers ",
         "opening_hours": {
             "open_now": true
         },
@@ -364,6 +371,7 @@ export let fakeRestaurant =[
         "vicinity": "41 Avenue Pierre 1er de Serbie, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -384,7 +392,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel Lancaster Paris Champs Elysées",
+        "name": "Hôtel Lancaster Paris Champs Elysées ",
         "opening_hours": {
             "open_now": true
         },
@@ -418,6 +426,7 @@ export let fakeRestaurant =[
         "vicinity": "7 Rue de Berri, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -438,7 +447,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel Elysia",
+        "name": " Hôtel Elysia",
         "opening_hours": {
             "open_now": true
         },
@@ -473,6 +482,7 @@ export let fakeRestaurant =[
         "vicinity": "35 Rue de Berri, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -493,7 +503,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel de La Trémoille",
+        "name": "Hôtel de La Trémoille ",
         "photos": [
             {
                 "height": 4608,
@@ -523,6 +533,7 @@ export let fakeRestaurant =[
         "vicinity": "14 Rue de la Tremoille, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -543,7 +554,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel Montaigne",
+        "name": " Hôtel Montaigne",
         "opening_hours": {
             "open_now": true
         },
@@ -576,6 +587,7 @@ export let fakeRestaurant =[
         "vicinity": "6 Avenue Montaigne, Paris"
     },
     {
+        "price_level": "2",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -596,7 +608,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Hôtel Napoléon",
+        "name": "Hôtel Napoléon ",
         "opening_hours": {
             "open_now": true
         },
@@ -630,6 +642,7 @@ export let fakeRestaurant =[
         "vicinity": "40 Avenue de Friedland, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -650,7 +663,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
         "icon_background_color": "#FF9E67",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
-        "name": "Domani",
+        "name": "Domani ",
         "opening_hours": {
             "open_now": true
         },
@@ -669,7 +682,6 @@ export let fakeRestaurant =[
             "compound_code": "V8C6+64 Paris, France",
             "global_code": "8FW4V8C6+64"
         },
-        "price_level": 3,
         "rating": 3.5,
         "reference": "ChIJFb8iucVv5kcRx1pcdNqtStk",
         "scope": "GOOGLE",
@@ -683,6 +695,7 @@ export let fakeRestaurant =[
         "vicinity": "8 Avenue Franklin Delano Roosevelt, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -703,7 +716,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
         "icon_background_color": "#FF9E67",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
-        "name": "Le Cinq",
+        "name": " Le Cinq",
         "opening_hours": {
             "open_now": false
         },
@@ -722,7 +735,6 @@ export let fakeRestaurant =[
             "compound_code": "V892+G7 Paris, France",
             "global_code": "8FW4V892+G7"
         },
-        "price_level": 4,
         "rating": 4.7,
         "reference": "ChIJqTQzIehv5kcRaF3hD1SzX5A",
         "scope": "GOOGLE",
@@ -737,6 +749,7 @@ export let fakeRestaurant =[
         "vicinity": "31 Avenue George V, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -757,7 +770,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/movies-71.png",
         "icon_background_color": "#13B5C7",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/movie_pinlet",
-        "name": "UGC Normandie",
+        "name": "UGC Normandie ",
         "opening_hours": {
             "open_now": true
         },
@@ -791,6 +804,7 @@ export let fakeRestaurant =[
         "vicinity": "116 bis Avenue des Champs-Élysées, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -811,7 +825,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png",
         "icon_background_color": "#7B9EB0",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
-        "name": "Bateaux-Mouches",
+        "name": " Bateaux-Mouches",
         "opening_hours": {
             "open_now": true
         },
@@ -844,6 +858,7 @@ export let fakeRestaurant =[
         "vicinity": "Port de la Conférence, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -864,7 +879,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         "icon_background_color": "#909CE1",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/hotel_pinlet",
-        "name": "Le Bristol Paris",
+        "name": " Le Bristol Paris",
         "opening_hours": {
             "open_now": true
         },
@@ -898,6 +913,7 @@ export let fakeRestaurant =[
         "vicinity": "112 Rue du Faubourg Saint-Honoré, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -918,7 +934,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
         "icon_background_color": "#FF9E67",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
-        "name": "Le Taillevent",
+        "name": "Le Taillevent ",
         "opening_hours": {
             "open_now": false
         },
@@ -937,7 +953,6 @@ export let fakeRestaurant =[
             "compound_code": "V8F2+JX Paris, France",
             "global_code": "8FW4V8F2+JX"
         },
-        "price_level": 4,
         "rating": 4.7,
         "reference": "ChIJp_LMzsFv5kcRahcM9RvYYV4",
         "scope": "GOOGLE",
@@ -951,6 +966,7 @@ export let fakeRestaurant =[
         "vicinity": "15 Rue Lamennais, Paris"
     },
     {
+        "price_level": "3",
         "business_status": "OPERATIONAL",
         "geometry": {
             "location": {
@@ -971,7 +987,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
         "icon_background_color": "#FF9E67",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
-        "name": "Le Paradis du Fruit",
+        "name": " Le Paradis du Fruit",
         "opening_hours": {
             "open_now": true
         },
@@ -990,7 +1006,6 @@ export let fakeRestaurant =[
             "compound_code": "V8C2+87 Paris, France",
             "global_code": "8FW4V8C2+87"
         },
-        "price_level": 2,
         "rating": 4,
         "reference": "ChIJq7uJdcJv5kcRlKVcTiuwdLE",
         "scope": "GOOGLE",
@@ -1024,7 +1039,7 @@ export let fakeRestaurant =[
         "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
         "icon_background_color": "#FF9E67",
         "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/restaurant_pinlet",
-        "name": "Fouquet's",
+        "name": "Fouquet's ",
         "opening_hours": {
             "open_now": true
         },
@@ -1043,7 +1058,6 @@ export let fakeRestaurant =[
             "compound_code": "V8C2+HG Paris, France",
             "global_code": "8FW4V8C2+HG"
         },
-        "price_level": 4,
         "rating": 4,
         "reference": "ChIJb1MgBMJv5kcROFQGTJ9L6SA",
         "scope": "GOOGLE",
@@ -1057,3 +1071,12 @@ export let fakeRestaurant =[
         "vicinity": "99 Avenue des Champs-Élysées, Paris"
     }
 ]
+
+export const getFakeRestaurants = (priceLevel?: string): any[] => {
+  if (!priceLevel?.length) {
+    return [...fakeRestaurants];
+  }
+  const res = fakeRestaurants.filter((restaurant) => restaurant.price_level?.length && restaurant.price_level === priceLevel);
+  console.log('[TEST] res : ', res);
+  return res;
+}

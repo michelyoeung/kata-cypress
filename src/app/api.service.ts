@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { fakeRestaurant } from './utils/fakeData';
+import { getFakeRestaurants } from './utils/fakeData';
+
+enum RESTAURANT_PRICE {
+  CHEAP = 'cheap',
+  MODERATE = 'moderate',
+  EXPENSIVE = 'expensive',
+  ALL = 'all'
+};
 
 @Injectable({
   providedIn: 'root',
@@ -14,26 +21,23 @@ export class ApiService {
   getNearbyRestaurant(options: any): void {
     let minprice: string = '';
     let maxprice: string = '';
+    let fakeRestaurants: any[] = [];
     switch(options.priceRange) {
-      case 'cheap':
-        minprice = '0'
-        maxprice = '1'
+      case RESTAURANT_PRICE.CHEAP:
+        fakeRestaurants = getFakeRestaurants("1");
         break;
-      case 'moderate':
-        minprice = '1'
-        maxprice = '2'
+      case RESTAURANT_PRICE.MODERATE:
+        fakeRestaurants = getFakeRestaurants("2");
         break;
-      case 'expensive' :
-        minprice = '2'
-        maxprice = '4'
+      case RESTAURANT_PRICE.EXPENSIVE :
+        fakeRestaurants = getFakeRestaurants("3");
         break;
-      case 'all' :
-        minprice = '0'
-        maxprice = '4'
+      case RESTAURANT_PRICE.ALL :
+        fakeRestaurants = getFakeRestaurants();
         break;
     }
     this._restaurants$.next({
-      results: fakeRestaurant,
+      results: fakeRestaurants,
     });
   }
 }

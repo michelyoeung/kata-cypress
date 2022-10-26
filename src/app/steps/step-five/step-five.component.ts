@@ -25,13 +25,7 @@ export class StepFiveComponent implements OnInit {
       } else {
         if ((restaurants as any)?.results?.length) {
           this.choiceOfRestaurants = restaurants;
-          const restaurantsNames = this.choiceOfRestaurants.results
-            .filter((restaurant: any) =>
-              !restaurant.name.toLowerCase().startsWith('hotel')
-              && !restaurant.name.toLowerCase().startsWith('hôtel')
-              && !restaurant.name.toLowerCase().startsWith("l'hôtel")
-            )
-            .map((restaurant: any) => restaurant.name);
+          const restaurantsNames = this.choiceOfRestaurants.results.map((restaurant: any) => restaurant.name);
           this.choiceOfRestaurantsNames = restaurantsNames.slice(0, 10);
           this.isLoading = false;
         }

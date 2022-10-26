@@ -1,6 +1,32 @@
-<div *ngIf="resultingRestaurant" class="flex flex-row mt-5 justify-center items-center w-full">
-  <div>
-    <p>Business status :</p>
-    <p>{{ resultingRestaurant.business_status }}</p>
+<div *ngIf="resultingRestaurant" class="flex flex-col justify-center items-center w-full">
+  <div id="recap-section" class="p-5 rounded">
+    <div class="recap-section--field flex flex-row justify-center items-center w-full mt-5">
+      <p class="font-bold">Name :</p>
+      <p class="ml-5">{{ resultingRestaurant.name }}</p>
+    </div>
+    <div class="recap-section--field flex flex-row justify-center items-center w-full mt-5">
+      <p class="font-bold">Address :</p>
+      <p class="ml-5">{{ resultingRestaurant.vicinity }}</p>
+    </div>
+    <div class="recap-section--field flex flex-row justify-center items-center w-full mt-5">
+      <p class="font-bold">Business status :</p>
+      <p class="ml-5">{{ resultingRestaurant.business_status }}</p>
+    </div>
+    <div class="recap-section--field flex flex-row justify-center items-center w-full mt-5">
+      <p class="font-bold">Logo :</p>
+      <img class="ml-5"
+           [src]="resultingRestaurant.icon"
+           [alt]="resultingRestaurant.name"
+           [style.background-color]="resultingRestaurant.icon_background_color || '#FFFFFF'">
+    </div>
+    <div class="flex flex-row justify-center items-center w-full mt-5">
+      <p class="font-bold">Price indicator (€ or €€ or €€€) :</p>
+      <div class="flex flex-row justify-center items-center ml-5">
+        <p *ngIf="priceLevel === 0">Unknown</p>
+        <p *ngFor="let index of priceLevelArray" class="ml-1">
+          €
+        </p>
+      </div>
+    </div>
   </div>
 </div>
