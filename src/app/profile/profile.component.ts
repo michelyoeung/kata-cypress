@@ -1,9 +1,25 @@
 import { Component } from '@angular/core';
-// @ts-ignore
-import { Curtains, Plane } from 'curtainsjs';
+import { FormBuilder } from "@angular/forms";
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent{}
+export class ProfileComponent{
+
+  profileForm = this.formBuilder.group({
+    name: '',
+    age: '',
+  });
+
+
+  constructor(
+    private formBuilder: FormBuilder,
+  ) {}
+
+  onSubmit(): void {
+    localStorage.setItem("name", this.profileForm.value.name as string)
+    localStorage.setItem("age", this.profileForm.value.age as string)
+  }
+
+}
