@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+
 import { ICircleStep } from './components-library/circle-steps/circle-step.interface';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   choiceOfRestaurant: string[] = [];
   resultingRestaurant: string = '';
   MAX_STEPS = 5;
@@ -23,6 +26,30 @@ export class AppComponent {
   ];
 
   stepData: any = {};
+
+  isLoadingProfile = false;
+
+  profileName = '';
+  profileAge = '';
+
+  private readonly _destroyed$ = new Subject<void>();
+
+  constructor(private readonly _apiService: ApiService) {}
+
+  ngOnInit() {
+    this.profileName = this._apiService.getNameFromLocalStorage();
+    this.profileAge = this._apiService.getAgeFromLocalStorage();
+    this._apiService.profileName$.pipe(takeUntil(this._destroyed$)).subscribe((name) => {
+      this.profileName = name;
+    });
+    this._apiService.profileAge$.pipe(takeUntil(this._destroyed$)).subscribe((age) => {
+      this.profileAge = age;
+    });
+  }
+
+  ngOnDestroy() {
+    this._destroyed$.next();
+  }
 
   isFirstStep(): boolean {
     return this.currentStep === 0;
@@ -68,5 +95,9 @@ export class AppComponent {
 
   openProfile(): void {
     this.onProfile = !this.onProfile;
+  }
+
+  onProfileLoading(isLoading: boolean): void {
+    this.isLoadingProfile = isLoading;
   }
 }

@@ -13,6 +13,7 @@
         <div class="form-control border-2 rounded">
           <input [formControlName]="'name'" type="text" name="name" placeholder="Your Name" required />
         </div>
+        <div *ngIf="hasErrorInName" class="form-error">Name is required</div>
       </div>
       <div class="form-field flex flex-col justify-center items-start w-full mt-5">
         <div class="form-label font-bold">Your Age :</div>
@@ -26,6 +27,7 @@
             required
           />
         </div>
+        <div *ngIf="hasErrorInAge" class="form-error">Age is must be a positive number</div>
       </div>
       <div class="form-field flex flex-col justify-center items-start w-full mt-5">
         <div class="form-label font-bold">Upload your profile picture :</div>

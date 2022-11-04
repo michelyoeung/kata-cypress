@@ -1,11 +1,26 @@
 <div class="main flex flex-col justify-center items-center">
+  <div
+    *ngIf="!onProfile && (profileName?.length || profileAge?.length)"
+    class="profile-header flex flex-col justify-center items-center p-5 border-2 rounded mb-10"
+  >
+    <p class="font-bold">Profile :</p>
+    <div *ngIf="profileName?.length" class="flex flex-row justify-start items-center w-full">
+      <p>Name :</p>
+      <p class="ml-2">{{ profileName }}</p>
+    </div>
+    <div *ngIf="profileAge?.length" class="flex flex-row justify-start items-center w-full">
+      <p>Age :</p>
+      <p class="ml-2">{{ profileAge }}</p>
+    </div>
+  </div>
   <app-chat-bubble
-    [text]="this.onProfile ? 'Retourner sur l\'app' : 'Mon Profile'"
+    [isDisabled]="isLoadingProfile"
+    [text]="this.onProfile ? 'Retourner sur l\'app' : 'Configurer mon profil'"
     (clicked)="openProfile()"
   ></app-chat-bubble>
-  <app-profile *ngIf="onProfile"></app-profile>
+  <app-profile *ngIf="onProfile" (onLoading)="onProfileLoading($event)"></app-profile>
   <app-circle-steps *ngIf="!isFirstStep() && !onProfile" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
-  <div *ngIf="!onProfile" [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center">
+  <div *ngIf="!onProfile" [ngSwitch]="currentStep" class="flex flex-col justify-center items-center w-full h-full">
     <app-step-one *ngSwitchCase="0" class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
     <app-step-two *ngSwitchCase="1" class="w-full" [stepData]="stepData" (onNextStep)="goNextStep($event, 2)">
     </app-step-two>

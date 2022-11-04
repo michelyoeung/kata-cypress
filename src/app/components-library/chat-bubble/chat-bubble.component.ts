@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ChatBubbleComponent implements OnInit {
   @Input() text = '';
   @Input() value = '';
+  @Input() isDisabled = false;
 
   @Output() clicked = new EventEmitter<string>();
 
@@ -19,6 +20,9 @@ export class ChatBubbleComponent implements OnInit {
   }
 
   onClick(): void {
+    if (this.isDisabled) {
+      return;
+    }
     this.nomSnd.play();
     this.clicked.emit(this.value);
   }
