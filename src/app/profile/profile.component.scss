@@ -1,33 +1,3 @@
-.page {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-
-  .form-group {
-    margin-top: 20vh;
-    padding: 20px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
-
-    .form-title {
-      text-align: center;
-    }
-
-    .form-body {
-      margin-top: 20px;
-
-      .form-label {
-        margin-top: 10px;
-      }
-
-      .form-control {
-        margin-top: 5px;
-      }
-    }
-
-    .validation-btn {
-      margin-top: 10px;
-    }
-  }
+form {
+  background-color: #fefefe;
 }

@@ -1,5 +1,8 @@
 <div class="main flex flex-col justify-center items-center">
-  <app-chat-bubble text="Mon Profil" (clicked)="openProfile()"></app-chat-bubble>
+  <app-chat-bubble
+    [text]="this.onProfile ? 'Retourner sur l\'app' : 'Mon Profile'"
+    (clicked)="openProfile()"
+  ></app-chat-bubble>
   <app-profile *ngIf="onProfile"></app-profile>
   <app-circle-steps *ngIf="!isFirstStep() && !onProfile" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
   <div *ngIf="!onProfile" [ngSwitch]="currentStep" class="steps flex flex-col justify-center items-center">
@@ -16,9 +19,11 @@
     <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
   </div>
   <div class="flex flex-col justify-center items-center w-full mt-12">
-    <button *ngIf="!isFirstStep() && !isFirstContentStep()"
+    <button
+      *ngIf="!isFirstStep() && !isFirstContentStep()"
       class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-      (click)="goPreviousStep()">
+      (click)="goPreviousStep()"
+    >
       Previous
     </button>
   </div>
