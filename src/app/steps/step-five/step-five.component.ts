@@ -1,25 +1,25 @@
-import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
-import {ApiService} from "../../api.service";
-import {take} from "rxjs";
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-step-five',
   templateUrl: './step-five.component.html',
-  styleUrls: ['./step-five.component.scss']
+  styleUrls: ['./step-five.component.scss'],
 })
 export class StepFiveComponent implements OnInit {
   @Input() stepData: any = {};
   @Output() onNextStep = new EventEmitter<string>();
   choiceOfRestaurantsNames: string[] = [];
-  choiceOfRestaurants : any;
+  choiceOfRestaurants: any;
   isLoading = true;
-  noRestaurant : boolean = false;
+  noRestaurant: boolean = false;
 
   constructor(private _api: ApiService) {}
 
   ngOnInit(): void {
     this._api.restaurants$.pipe(take(1)).subscribe((restaurants) => {
-      if ((restaurants as any)?.status === "ZERO_RESULTS"){
+      if ((restaurants as any)?.status === 'ZERO_RESULTS') {
         this.noRestaurant = true;
         this.isLoading = false;
       } else {
@@ -39,9 +39,11 @@ export class StepFiveComponent implements OnInit {
   }
 
   openMapsPage(resultingRestaurantName: string): void {
-    const restaurant = this.choiceOfRestaurants.results?.find((restaurant: any) => restaurant.name === resultingRestaurantName);
+    const restaurant = this.choiceOfRestaurants.results?.find(
+      (restaurant: any) => restaurant.name === resultingRestaurantName,
+    );
     setTimeout(() => {
-      this.goNextStep(restaurant)
+      this.goNextStep(restaurant);
     }, 3000);
   }
 }

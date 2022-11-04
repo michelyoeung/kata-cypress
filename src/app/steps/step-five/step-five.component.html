@@ -1,3 +1,7 @@
 <p *ngIf="isLoading" class="w-full text-center">Please be patient...</p>
-<app-food-roulette *ngIf="!isLoading && !noRestaurant" [options]="this.choiceOfRestaurantsNames" (foodDecisionEnd)="openMapsPage($event)"></app-food-roulette>
+<app-food-roulette
+  *ngIf="!isLoading && !noRestaurant"
+  [options]="this.choiceOfRestaurantsNames"
+  (foodDecisionEnd)="openMapsPage($event)"
+></app-food-roulette>
 <p *ngIf="!isLoading && noRestaurant" class="w-full text-center">No restaurant with these criteria :(</p>

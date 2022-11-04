@@ -1,5 +1,5 @@
 @keyframes tourne {
-    0% {
+  0% {
     transform: rotate(0deg);
   }
   100% {
@@ -8,8 +8,8 @@
 }
 
 .logo-animation {
-    animation: tourne 12s infinite;
+  animation: tourne 12s infinite;
 }
 .logo {
-    cursor: pointer;
+  cursor: pointer;
 }

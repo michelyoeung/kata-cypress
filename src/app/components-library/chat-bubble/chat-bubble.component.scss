@@ -17,15 +17,14 @@
   }
 }
 
-.border{
+.border {
   border: 8px solid #666;
 }
 
-.round{
+.round {
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
-
 }
 
 /* Right triangle placed top left flush. */
@@ -41,7 +40,7 @@
   border: 32px solid;
   border-color: #666 transparent transparent transparent;
 }
-.tri-right.left-top:after{
+.tri-right.left-top:after {
   content: ' ';
   position: absolute;
   width: 0;
@@ -93,7 +92,7 @@
   border: 32px solid;
   border-color: transparent transparent transparent #666;
 }
-.tri-right.btm-left:after{
+.tri-right.btm-left:after {
   content: ' ';
   position: absolute;
   width: 0;
@@ -119,7 +118,7 @@
   border: 20px solid;
   border-color: #666 transparent transparent #666;
 }
-.tri-right.btm-left-in:after{
+.tri-right.btm-left-in:after {
   content: ' ';
   position: absolute;
   width: 0;
@@ -144,7 +143,7 @@
   border: 20px solid;
   border-color: #666 #666 transparent transparent;
 }
-.tri-right.btm-right-in:after{
+.tri-right.btm-right-in:after {
   content: ' ';
   position: absolute;
   width: 0;
@@ -181,7 +180,7 @@
   border: 20px solid;
   border-color: #666 #666 transparent transparent;
 }
-.tri-right.btm-right:after{
+.tri-right.btm-right:after {
   content: ' ';
   position: absolute;
   width: 0;
@@ -251,7 +250,7 @@
   line-height: 1.5em;
 }
 
-.talktext p{
+.talktext p {
   /* remove webkit p margins */
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;

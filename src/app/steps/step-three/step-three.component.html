@@ -1,5 +1,17 @@
 <div class="flex flex-col justify-center items-center w-100">
-  <app-chat-bubble class="flex flex-row justify-self-start w-100" text="Junk Food" (clicked)="goNextStep('junk food')"></app-chat-bubble>
-  <app-chat-bubble class="flex flex-row justify-self-end w-100" text="Healthy Food" (clicked)="goNextStep('healthy food')"></app-chat-bubble>
-  <app-chat-bubble class="flex flex-row justify-self-start w-100" text="ALL" (clicked)="goNextStep('all')"></app-chat-bubble>
+  <app-chat-bubble
+    class="flex flex-row justify-self-start w-100"
+    text="Junk Food"
+    (clicked)="goNextStep('junk food')"
+  ></app-chat-bubble>
+  <app-chat-bubble
+    class="flex flex-row justify-self-end w-100"
+    text="Healthy Food"
+    (clicked)="goNextStep('healthy food')"
+  ></app-chat-bubble>
+  <app-chat-bubble
+    class="flex flex-row justify-self-start w-100"
+    text="ALL"
+    (clicked)="goNextStep('all')"
+  ></app-chat-bubble>
 </div>

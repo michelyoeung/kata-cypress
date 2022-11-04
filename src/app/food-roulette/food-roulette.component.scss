@@ -1,66 +1,65 @@
 button {
-    width: 200px;
-    height: 110px;
-    color: #33659a;
-    background-color: #91eddc;
-    border-radius: 10px;
-    font-size: 30px;
-    padding: 1em;
+  width: 200px;
+  height: 110px;
+  color: #33659a;
+  background-color: #91eddc;
+  border-radius: 10px;
+  font-size: 30px;
+  padding: 1em;
 }
 
 .empty-filler {
-    height: 110px;
+  height: 110px;
 }
 
 #confetti-canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    user-select: none;
-    pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
 #curtains-canvas {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    user-select: none;
-    pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
 .effects-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+  pointer-events: none;
+
+  .curtains-plane {
     position: absolute;
-    left: 0;
     top: 0;
-    height: 100vh;
-    width: 100vw;
+    width: 50%;
+    height: 100%;
     user-select: none;
     pointer-events: none;
+    z-index: 2;
 
-    .curtains-plane {
-        position: absolute;
-        top: 0;
-        width: 50%;
-        height: 100%;
-        user-select: none;
-        pointer-events: none;
-        z-index: 2;
-
-        &.one {
-            left: 0;
-        }
-
-        &.two {
-            right: 0;
-        }
-
-        img {
-            display: none;
-        }
+    &.one {
+      left: 0;
     }
 
+    &.two {
+      right: 0;
+    }
+
+    img {
+      display: none;
+    }
+  }
 }

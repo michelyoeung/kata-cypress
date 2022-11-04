@@ -6,8 +6,8 @@ enum RESTAURANT_PRICE {
   CHEAP = 'cheap',
   MODERATE = 'moderate',
   EXPENSIVE = 'expensive',
-  ALL = 'all'
-};
+  ALL = 'all',
+}
 
 @Injectable({
   providedIn: 'root',
@@ -22,17 +22,17 @@ export class ApiService {
     let minprice: string = '';
     let maxprice: string = '';
     let fakeRestaurants: any[] = [];
-    switch(options.priceRange) {
+    switch (options.priceRange) {
       case RESTAURANT_PRICE.CHEAP:
-        fakeRestaurants = getFakeRestaurants("1");
+        fakeRestaurants = getFakeRestaurants('1');
         break;
       case RESTAURANT_PRICE.MODERATE:
-        fakeRestaurants = getFakeRestaurants("2");
+        fakeRestaurants = getFakeRestaurants('2');
         break;
-      case RESTAURANT_PRICE.EXPENSIVE :
-        fakeRestaurants = getFakeRestaurants("3");
+      case RESTAURANT_PRICE.EXPENSIVE:
+        fakeRestaurants = getFakeRestaurants('3');
         break;
-      case RESTAURANT_PRICE.ALL :
+      case RESTAURANT_PRICE.ALL:
         fakeRestaurants = getFakeRestaurants();
         break;
     }

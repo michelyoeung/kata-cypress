@@ -1,15 +1,15 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-step-result',
   templateUrl: './step-result.component.html',
-  styleUrls: ['./step-result.component.scss']
+  styleUrls: ['./step-result.component.scss'],
 })
 export class StepResultComponent {
   @Input() resultingRestaurant: any = null;
 
   get priceLevel(): number {
-    const priceLevel = parseInt(this.resultingRestaurant?.price_level?.toString() || "0", 10);
+    const priceLevel = parseInt(this.resultingRestaurant?.price_level?.toString() || '0', 10);
     return !isNaN(priceLevel) ? priceLevel : 0;
   }
 

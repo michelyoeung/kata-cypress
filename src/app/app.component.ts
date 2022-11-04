@@ -1,13 +1,12 @@
-import {Component} from '@angular/core';
-import {ICircleStep} from "./components-library/circle-steps/circle-step.interface";
+import { Component } from '@angular/core';
+import { ICircleStep } from './components-library/circle-steps/circle-step.interface';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   choiceOfRestaurant: string[] = [];
   resultingRestaurant: string = '';
   MAX_STEPS = 5;
@@ -20,7 +19,7 @@ export class AppComponent {
     { id: 2, onClick: () => {} },
     { id: 3, onClick: () => {} },
     { id: 4, onClick: () => {} },
-    { id: 5, onClick: () => {} }
+    { id: 5, onClick: () => {} },
   ];
 
   stepData: any = {};

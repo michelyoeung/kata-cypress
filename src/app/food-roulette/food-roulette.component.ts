@@ -1,18 +1,18 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 // @ts-ignore
-import ConfettiGenerator from "confetti-js";
-import JSConfetti from 'js-confetti'
+import ConfettiGenerator from 'confetti-js';
+import JSConfetti from 'js-confetti';
 // @ts-ignore
 import { Curtains, Plane } from 'curtainsjs';
 @Component({
   selector: 'app-food-roulette',
   templateUrl: './food-roulette.component.html',
-  styleUrls: ['./food-roulette.component.scss']
+  styleUrls: ['./food-roulette.component.scss'],
 })
 export class FoodRouletteComponent implements OnInit, AfterViewInit {
   @Input() height = 500;
   @Input() width = 500;
-  @Input() options = ["Helia", "Pate à Nouilles", "BK", "McDonalds", "DaDa", "MAME", "Bun", "Japonais"];
+  @Input() options = ['Helia', 'Pate à Nouilles', 'BK', 'McDonalds', 'DaDa', 'MAME', 'Bun', 'Japonais'];
 
   @Input() stepSize = 25;
   @Input() spinDuration = 5000; // ms
@@ -63,17 +63,17 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     // addScripts()
 
     const curtains = new Curtains({
-      container: "curtains-canvas"
+      container: 'curtains-canvas',
     });
     const params = {
-      vertexShaderID: "plane-vs", // our vertex shader ID
-      fragmentShaderID: "plane-fs", // our fragment shader ID
+      vertexShaderID: 'plane-vs', // our vertex shader ID
+      fragmentShaderID: 'plane-fs', // our fragment shader ID
       widthSegments: 10,
       heightSegments: 10,
       uniforms: {
         time: {
-          name: "uTime", // uniform name that will be passed to our shaders
-          type: "1f", // this means our uniform is a float
+          name: 'uTime', // uniform name that will be passed to our shaders
+          type: '1f', // this means our uniform is a float
           value: 0,
         },
       },
@@ -90,7 +90,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     plane1.onRender(() => {
       setTimeout(() => {
         plane1.relativeTranslation.x -= 10;
-      }, 300)
+      }, 300);
       if (numberOfIterations < 4) {
         numberOfIterations++;
         return;
@@ -101,7 +101,6 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       }
       if (side) {
         value++;
-
       } else {
         value--;
       }
@@ -112,7 +111,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     plane2.onRender(() => {
       setTimeout(() => {
         plane2.relativeTranslation.x += 10;
-      }, 300)
+      }, 300);
       if (numberOfIterations < 4) {
         numberOfIterations++;
         return;
@@ -123,7 +122,6 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       }
       if (side) {
         value++;
-
       } else {
         value--;
       }
@@ -131,26 +129,24 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       plane2.uniforms.time.value = value;
     });
 
-    curtains.onRender(() => {
-
-    });
+    curtains.onRender(() => {});
   }
 
   ngOnInit(): void {
-    this.spinSound.src = "../../assets/sounds/wheel-spin.wav";
+    this.spinSound.src = '../../assets/sounds/wheel-spin.wav';
     this.spinSound.load();
 
-    this.wheelDecisionSound.src = "../../assets/sounds/wheel-choice.mp3";
+    this.wheelDecisionSound.src = '../../assets/sounds/wheel-choice.mp3';
     this.wheelDecisionSound.load();
 
-    this.bonAppetitSound.src = "../../assets/sounds/bon-appetit.mp3";
+    this.bonAppetitSound.src = '../../assets/sounds/bon-appetit.mp3';
     this.bonAppetitSound.volume = 1;
     this.bonAppetitSound.load();
   }
 
   byte2Hex(n: number) {
-    const nybHexString = "0123456789ABCDEF";
-    return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
+    const nybHexString = '0123456789ABCDEF';
+    return String(nybHexString.substr((n >> 4) & 0x0f, 1)) + nybHexString.substr(n & 0x0f, 1);
   }
 
   RGB2Color(r: number, g: number, b: number) {
@@ -161,7 +157,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
     const phase = 0;
     const center = 128;
     const width = 127;
-    const frequency = Math.PI * 2 / maxItems;
+    const frequency = (Math.PI * 2) / maxItems;
 
     const red = Math.sin(frequency * item + 2 + phase) * width + center;
     const green = Math.sin(frequency * item + 0 + phase) * width + center;
@@ -172,10 +168,10 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
 
   drawRouletteWheel() {
     if (this.canvas.nativeElement.getContext) {
-      const ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
+      const ctx = this.canvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
       ctx.clearRect(0, 0, this.width, this.height);
 
-      ctx.strokeStyle = "black";
+      ctx.strokeStyle = 'black';
       ctx.lineWidth = 2;
 
       ctx.font = this.itemFont;
@@ -195,10 +191,12 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
         ctx.shadowOffsetX = 1;
         ctx.shadowOffsetY = 1;
         ctx.shadowBlur = 5;
-        ctx.shadowColor = "rgb(20,20,20)";
-        ctx.fillStyle = "white";
-        ctx.translate(this.width / 2 + Math.cos(angle + this._arc / 2) * this.textRadius,
-          this.height / 2 + Math.sin(angle + this._arc / 2) * this.textRadius);
+        ctx.shadowColor = 'rgb(20,20,20)';
+        ctx.fillStyle = 'white';
+        ctx.translate(
+          this.width / 2 + Math.cos(angle + this._arc / 2) * this.textRadius,
+          this.height / 2 + Math.sin(angle + this._arc / 2) * this.textRadius,
+        );
         ctx.rotate(angle + this._arc / 2 + Math.PI / 2);
         const text = this.options[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
@@ -206,7 +204,7 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       }
 
       //Arrow
-      ctx.fillStyle = "black";
+      ctx.fillStyle = 'black';
       ctx.beginPath();
       ctx.moveTo(this.width / 2 - 4, this.height / 2 - (this.outsideRadius + 5));
       ctx.lineTo(this.width / 2 + 4, this.height / 2 - (this.outsideRadius + 5));
@@ -236,21 +234,22 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       this.stopRotateWheel();
       return;
     }
-    const spinAngle = this._spinAngleStart - this.easeOut(this._curSpinTime, 0, this._spinAngleStart, this._spinTimeTotal);
-    this._startAngle += (spinAngle * Math.PI / 180);
+    const spinAngle =
+      this._spinAngleStart - this.easeOut(this._curSpinTime, 0, this._spinAngleStart, this._spinTimeTotal);
+    this._startAngle += (spinAngle * Math.PI) / 180;
     this.drawRouletteWheel();
     this._spinTimeout = setTimeout(() => this.rotateWheel(), this.stepSize);
   }
 
   stopRotateWheel() {
-    const ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
+    const ctx = this.canvas.nativeElement.getContext('2d') as CanvasRenderingContext2D;
     clearTimeout(this._spinTimeout);
-    const degrees = this._startAngle * 180 / Math.PI + 90;
-    const arcd = this._arc * 180 / Math.PI;
-    const index = Math.floor((360 - degrees % 360) / arcd);
+    const degrees = (this._startAngle * 180) / Math.PI + 90;
+    const arcd = (this._arc * 180) / Math.PI;
+    const index = Math.floor((360 - (degrees % 360)) / arcd);
     ctx.save();
     ctx.font = this.decisionFont;
-    const text = this.options[index]
+    const text = this.options[index];
     ctx.fillText(text, this.width / 2 - ctx.measureText(text).width / 2, this.height / 2 + 10);
     ctx.restore();
 
@@ -258,10 +257,10 @@ export class FoodRouletteComponent implements OnInit, AfterViewInit {
       this.wheelDecisionSound.play();
       setTimeout(() => this.bonAppetitSound.play(), 800);
     }
-    this._confetti_1.render()
+    this._confetti_1.render();
     this._confetti_2.addConfetti({
       confettiNumber: 500,
-    })
+    });
     this.foodDecisionEnd.emit(text);
   }
 
