@@ -29,5 +29,17 @@
         <p *ngFor="let index of priceLevelArray" class="ml-1">€</p>
       </div>
     </div>
+    <div class="recap-section--field flex flex-row justify-start items-center w-full mt-5">
+      <p class="font-bold text-left">Chosen diet : </p>
+      <p>{{stepData.regime}}</p>
+    </div>
+    <div class="recap-section--field flex flex-row justify-start items-center w-full mt-5">
+        <p class="font-bold">Chosen type of food : </p>
+        <p>{{stepData.typeOfFood}}</p>
+    </div>
+    <div class="recap-section--field flex flex-row justify-start items-center w-full mt-5">
+      <p class="font-bold text-left">Chosen price range : </p>
+      <p>{{stepData.priceRange}}</p>
+    </div>
   </div>
 </div>
