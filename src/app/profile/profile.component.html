@@ -11,7 +11,7 @@
       <div class="form-field flex flex-col justify-center items-start w-full">
         <div class="form-label font-bold">Your Name :</div>
         <div class="form-control border-2 rounded">
-          <input [formControlName]="'name'" type="text" name="name" placeholder="Your Name" required />
+          <input data-cy="inputName" [formControlName]="'name'" type="text" name="name" placeholder="Your Name" required />
         </div>
         <div *ngIf="hasErrorInName" class="form-error">Name is required</div>
       </div>
@@ -20,6 +20,7 @@
         <div class="form-control border-2 rounded">
           <input
             [formControlName]="'age'"
+            data-cy="inputAge"
             class="form-control"
             type="number"
             name="age"
@@ -32,7 +33,7 @@
       <div class="form-field flex flex-col justify-center items-start w-full mt-5">
         <div class="form-label font-bold">Upload your profile picture :</div>
         <div class="form-control border-2 rounded">
-          <input class="form-control" type="file" name="profile-picture" />
+          <input class="form-control" data-cy="inputProfilePic" type="file" name="profile-picture" />
         </div>
       </div>
       <div class="form-field flex flex-row justify-start items-center w-full mt-5">
@@ -40,12 +41,13 @@
           >I accept the term and condition
           <a class="underline" href="https://www.youtube.com/watch?v=-AXetJvTfU0" target="_blank">read it</a></label
         >
-        <input class="form-check-input ml-5" type="checkbox" value="" id="defaultCheck1" required />
+        <input class="form-check-input ml-5" data-cy="inputCheck" type="checkbox" value="" id="defaultCheck1" required />
       </div>
     </div>
     <button
       type="submit"
       class="validation-btn bg-blue-500 hover:bg-blue-700 text-white font-font-bold py-2 px-4 rounded mt-5"
+      data-cy="formValid"
     >
       Submit
     </button>

@@ -17,6 +17,7 @@
     [isDisabled]="isLoadingProfile"
     [text]="this.onProfile ? 'Retourner sur l\'app' : 'Configurer mon profil'"
     (clicked)="openProfile()"
+    data-cy="changeProfile"
   ></app-chat-bubble>
   <app-profile *ngIf="onProfile" (onLoading)="onProfileLoading($event)"></app-profile>
   <app-circle-steps *ngIf="!isFirstStep() && !onProfile" [steps]="steps" [activeStep]="currentStep"></app-circle-steps>
