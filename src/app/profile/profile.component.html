@@ -11,7 +11,14 @@
       <div class="form-field flex flex-col justify-center items-start w-full">
         <div class="form-label font-bold">Your Name :</div>
         <div class="form-control border-2 rounded">
-          <input data-cy="inputName" [formControlName]="'name'" type="text" name="name" placeholder="Your Name" required />
+          <input
+            data-cy="inputName"
+            [formControlName]="'name'"
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+          />
         </div>
         <div *ngIf="hasErrorInName" class="form-error">Name is required</div>
       </div>
@@ -41,7 +48,14 @@
           >I accept the term and condition
           <a class="underline" href="https://www.youtube.com/watch?v=-AXetJvTfU0" target="_blank">read it</a></label
         >
-        <input class="form-check-input ml-5" data-cy="inputCheck" type="checkbox" value="" id="defaultCheck1" required />
+        <input
+          class="form-check-input ml-5"
+          data-cy="inputCheck"
+          type="checkbox"
+          value=""
+          id="defaultCheck1"
+          required
+        />
       </div>
     </div>
     <button

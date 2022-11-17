@@ -31,7 +31,12 @@
     </app-step-four>
     <app-step-five *ngSwitchCase="4" class="w-full" [stepData]="stepData" (onNextStep)="goFinalStep($event)">
     </app-step-five>
-    <app-step-result *ngSwitchCase="5" class="w-full" [stepData]="stepData" [resultingRestaurant]="resultingRestaurant"></app-step-result>
+    <app-step-result
+      *ngSwitchCase="5"
+      class="w-full"
+      [stepData]="stepData"
+      [resultingRestaurant]="resultingRestaurant"
+    ></app-step-result>
     <app-step-one *ngSwitchDefault class="w-full" (onNextStep)="goNextStep($event, 1)"></app-step-one>
   </div>
   <div class="flex flex-col justify-center items-center w-full mt-12">

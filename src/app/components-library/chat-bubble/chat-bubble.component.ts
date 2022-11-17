@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-chat-bubble',
   templateUrl: './chat-bubble.component.html',
   styleUrls: ['./chat-bubble.component.scss'],
 })
-export class ChatBubbleComponent implements OnInit {
+export class ChatBubbleComponent {
   @Input() text = '';
   @Input() value = '';
   @Input() isDisabled = false;
@@ -13,11 +13,6 @@ export class ChatBubbleComponent implements OnInit {
   @Output() clicked = new EventEmitter<string>();
 
   nomSnd = new Audio();
-
-  ngOnInit() {
-    this.nomSnd.src = '../../assets/sounds/nom-nom.mp3';
-    this.nomSnd.load();
-  }
 
   onClick(): void {
     if (this.isDisabled) {
