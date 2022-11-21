@@ -150,4 +150,4 @@ an arbitrary period of time.
 
 ## See more
 
-Here you can check this beautiful [Cypress article](https://www.youtube.com/watch?v=dQw4w9WgXcQ) made by Léopold Bancal and Antoine Meirhaeghe.
+Here you can check this beautiful [Cypress article](https://nxacademy.neoxia.com/article/269) made by Léopold Bancal and Antoine Meirhaeghe.
