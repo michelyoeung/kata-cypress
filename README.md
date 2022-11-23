@@ -1,9 +1,17 @@
+## Summary
+
+1. [Introduction](#introduction)
+2. [Get started](#get-started)
+3. [Exercise](#exercise)
+4. [Tips and best practices](#tips-and-best-practices)
+5. [See more](#see-more)
+
 ## Introduction
 
 As we know, end-to-end (e2e) testing can be very repetitive and time consuming at the same time. Cypress is one of the most famous e2e testing tool.
 It allows us to make e2e tests in the same way an end user would do. It is mainly used to make e2e tests on pre-production environment, before a release,
-to test the non-regression and the new features and would partially replace the Quality Assurance (QA) team. "Partially" because we will always need a real human
-to assert generally that every goes well on the application before a release (just in case).
+to test the non-regression and the new features and would partially replace the Quality Assurance (QA) team. E2E does not substitute human testing but mostly 
+lighten the non regression testing complexity.
 This Code Kata allows you dip your hands into Cypress : how it works, how to make your first basic e2e tests, and what are the best practices.
 
 ## Get started
@@ -12,7 +20,7 @@ This Code Kata allows you dip your hands into Cypress : how it works, how to mak
    about the different interactions, the UX/UI, etc. (spoiler : you might have seen this application before).
 
 
-2. To run the project (on localhost port 4200) :
+2. To run the project with npm (**there is no required npm version but you can use npm 7/8 in your local setup**), on localhost port 4200 :
 
    ```
    npm i
@@ -41,7 +49,7 @@ This Code Kata allows you dip your hands into Cypress : how it works, how to mak
    - Inside `/cypress/support/` folder, this will contain every written Cypress commands (we will talk about this later).
    - Inside `/cypress/fixtures/` folder, this will contain the different configuration files in order to mock your data for example (normally not used in this Code Kata).
 
-## Exercice
+## Exercise
 
 As exercice, you can implement these different e2e tests :
 
